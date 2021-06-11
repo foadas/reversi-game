@@ -21,7 +21,7 @@ public class Othellocontroller implements Initializable {
     public static ImageView colorimage;
     @FXML
     private VBox field;
-    public static String turn="black";
+    public static String turn="blue";
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for(int i=0;i<8;i++){
@@ -80,6 +80,8 @@ public class Othellocontroller implements Initializable {
                     checkup(a,b,turn);
                     checkdown(a,b,turn);
                     checkleft(a,b,turn);
+                    checkright(a,b,turn);
+                    turn="black";
                 });
             }
         }
@@ -93,7 +95,7 @@ public class Othellocontroller implements Initializable {
         }
     }
     public void checkleft(int i,int j,String turn){
-        for(int k=j-2;k<8;k--){
+        for(int k=j-2;k>0;k--){
             if(color[i][k].equals(turn)){
                 //coloringleft(i,j,k);
                 break;

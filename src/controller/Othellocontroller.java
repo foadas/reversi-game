@@ -12,7 +12,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Othellocontroller implements Initializable {
@@ -22,20 +21,21 @@ public class Othellocontroller implements Initializable {
     public static ImageView colorimage;
     @FXML
     private VBox field;
-
+    public static String turn="black";
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for(int i=0;i<8;i++){
             HBox hBox=new HBox();
             for (int j = 0; j <8 ; j++) {
                 Button button=new Button("");
-
+                color[i][j]="";
                 if(i==3&&j==3){
                     Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
                     colorimage = new ImageView(playimage);
                     colorimage.setFitHeight(27);
                     colorimage.setFitWidth(27);
                     button.setGraphic(colorimage);
+                    color[i][j]="blue";
                 }
                 if(i==3&&j==4){
                     Image playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
@@ -43,6 +43,7 @@ public class Othellocontroller implements Initializable {
                     colorimage.setFitHeight(27);
                     colorimage.setFitWidth(27);
                     button.setGraphic(colorimage);
+                    color[i][j]="black";
                 }
                 if(i==4&&j==3){
                     Image playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
@@ -50,6 +51,7 @@ public class Othellocontroller implements Initializable {
                     colorimage.setFitHeight(27);
                     colorimage.setFitWidth(27);
                     button.setGraphic(colorimage);
+                    color[i][j]="black";
                 }
                 if(i==4&&j==4){
                     Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
@@ -57,6 +59,7 @@ public class Othellocontroller implements Initializable {
                     colorimage.setFitHeight(27);
                     colorimage.setFitWidth(27);
                     button.setGraphic(colorimage);
+                    color[i][j]="blue";
                 }
                 button.setPrefHeight(43);
                 button.setPrefWidth(43);
@@ -69,25 +72,67 @@ public class Othellocontroller implements Initializable {
         }
         field.setSpacing(2);
         field.setAlignment(Pos.CENTER);
+        buttons[2][4].setOnAction(e->{
+            checkup(2,4,turn);
+            checkdown(2,4,turn);
+        });
     }
 
-    public void checkup(int i,int j,String turn){
-        for(int k=i-1;k>=0;k--){
-            System.out.println(1);
+    public void checkdown(int i ,int j, String turn){
+        for(int k=i+2;k<8;k++){
             if(color[k][j].equals(turn)){
-                System.out.println(1);
+                coloringdown(i,j,k);
+                break;
+            }
+        }
+    }
+    public void checkup(int i,int j,String turn){
+        for(int k=i-2;k>0;k--){
+            if(color[k][j].equals(turn)){
                 coloringup(i,j,k);
-
                 break;
             }
         }
     }
     public void coloringup(int i,int j,int k){
-        Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-        colorimage = new ImageView(playimage);
-        colorimage.setFitHeight(27);
-        colorimage.setFitWidth(27);
+        Image playimage=null;
+        if(turn.equals("black")) {
+            playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+        }
+        if(turn.equals("blue")) {
+            playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+        }
         for (int l = i; l >k; l--) {
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+            buttons[l][j].setGraphic(colorimage);
+        }
+    }
+    public void coloringdown(int i,int j,int k){
+        Image playimage=null;
+        if(turn.equals("black")) {
+            playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+        }
+        if(turn.equals("blue")) {
+            playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+        }
+        for (int l = i; l <k; l++) {
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
             buttons[l][j].setGraphic(colorimage);
         }
     }

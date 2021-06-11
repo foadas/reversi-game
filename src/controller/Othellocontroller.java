@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +20,7 @@ public class Othellocontroller implements Initializable {
     public static ImageView colorimage;
     @FXML
     private VBox field;
-    public static String turn="black";
+    public static String turn="blue";
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for(int i=0;i<8;i++){
@@ -72,10 +71,20 @@ public class Othellocontroller implements Initializable {
         }
         field.setSpacing(2);
         field.setAlignment(Pos.CENTER);
-        buttons[2][4].setOnAction(e->{
-            checkup(2,4,turn);
-            checkdown(2,4,turn);
-        });
+        for (int i = 0; i <8 ; i++) {
+            for (int j = 0; j <8 ; j++) {
+                int a=i;
+                int b=j;
+                buttons[i][j].setOnAction(e->{
+                    checkup(a,b,turn);
+                    checkdown(a,b,turn);
+                    if(turn.equals("black")){
+                        turn="blue";
+                    }else {turn="black";}
+                });
+            }
+        }
+
     }
 
     public void checkdown(int i ,int j, String turn){
@@ -136,4 +145,5 @@ public class Othellocontroller implements Initializable {
             buttons[l][j].setGraphic(colorimage);
         }
     }
+
 }

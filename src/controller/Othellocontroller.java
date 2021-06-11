@@ -72,10 +72,23 @@ public class Othellocontroller implements Initializable {
         }
         field.setSpacing(2);
         field.setAlignment(Pos.CENTER);
-        buttons[2][4].setOnAction(e->{
-            checkup(2,4,turn);
-            checkdown(2,4,turn);
-        });
+        
+    }
+    public void checkright(int i,int j,String turn){
+        for(int k=j+2;k<8;k++){
+            if(color[i][k].equals(turn)){
+                coloringright(i,j,k);
+                break;
+            }
+        }
+    }
+    public void checkleft(int i,int j,String turn){
+        for(int k=j-2;k<8;k--){
+            if(color[i][k].equals(turn)){
+                //coloringleft(i,j,k);
+                break;
+            }
+        }
     }
 
     public void checkdown(int i ,int j, String turn){
@@ -134,6 +147,27 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitHeight(27);
             colorimage.setFitWidth(27);
             buttons[l][j].setGraphic(colorimage);
+        }
+    }
+    public void coloringright(int i,int j,int k){
+        Image playimage=null;
+        if(turn.equals("black")) {
+            playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+        }
+        if(turn.equals("blue")) {
+            playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+        }
+        for (int l = j; l <k; l++) {
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+            buttons[i][k].setGraphic(colorimage);
         }
     }
 }

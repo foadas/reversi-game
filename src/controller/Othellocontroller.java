@@ -72,7 +72,17 @@ public class Othellocontroller implements Initializable {
         }
         field.setSpacing(2);
         field.setAlignment(Pos.CENTER);
-        
+        for (int i = 0; i <8 ; i++) {
+            for (int j = 0; j <8 ; j++) {
+                int a=i;
+                int b=j;
+                buttons[i][j].setOnAction(e->{
+                    checkup(a,b,turn);
+                    checkdown(a,b,turn);
+                    checkleft(a,b,turn);
+                });
+            }
+        }
     }
     public void checkright(int i,int j,String turn){
         for(int k=j+2;k<8;k++){

@@ -81,13 +81,20 @@ public class Othellocontroller implements Initializable {
                     checkdown(a,b,turn);
                     checkleft(a,b,turn);
                     checkright(a,b,turn);
-                    turn="black";
+                    if (turn.equals("blue")) {
+                        turn = "black";
+                    }else{
+                        turn="blue";
+                    }
                 });
             }
         }
     }
     public void checkright(int i,int j,String turn){
         for(int k=j+2;k<8;k++){
+            if(color[i][j+1].equals("")||color[i][j+1].equals(turn)){
+                break;
+            }
             if(color[i][k].equals(turn)){
                 coloringright(i,j,k);
                 break;
@@ -96,8 +103,11 @@ public class Othellocontroller implements Initializable {
     }
     public void checkleft(int i,int j,String turn){
         for(int k=j-2;k>0;k--){
+            if(color[i][j-1].equals("")||color[i][j-1].equals(turn)){
+                break;
+            }
             if(color[i][k].equals(turn)){
-                //coloringleft(i,j,k);
+                coloringleft(i,j,k);
                 break;
             }
         }
@@ -105,14 +115,21 @@ public class Othellocontroller implements Initializable {
 
     public void checkdown(int i ,int j, String turn){
         for(int k=i+2;k<8;k++){
+            if(color[i+1][j].equals("")||color[i+1][j].equals(turn)){
+                break;
+            }
             if(color[k][j].equals(turn)){
                 coloringdown(i,j,k);
+
                 break;
             }
         }
     }
     public void checkup(int i,int j,String turn){
         for(int k=i-2;k>0;k--){
+            if(color[i-1][j].equals("")||color[i-1][j].equals(turn)){
+                break;
+            }
             if(color[k][j].equals(turn)){
                 coloringup(i,j,k);
                 break;
@@ -179,7 +196,28 @@ public class Othellocontroller implements Initializable {
             colorimage = new ImageView(playimage);
             colorimage.setFitHeight(27);
             colorimage.setFitWidth(27);
-            buttons[i][k].setGraphic(colorimage);
+            buttons[i][l].setGraphic(colorimage);
+        }
+    }
+    public void coloringleft(int i,int j,int k){
+        Image playimage=null;
+        if(turn.equals("black")) {
+            playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+        }
+        if(turn.equals("blue")) {
+            playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+        }
+        for (int l = j; l >k; l--) {
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(27);
+            colorimage.setFitWidth(27);
+            buttons[i][l].setGraphic(colorimage);
         }
     }
 }

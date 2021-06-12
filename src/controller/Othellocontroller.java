@@ -37,6 +37,7 @@ public class Othellocontroller implements Initializable {
                     colorimage.setFitWidth(27);
                     button.setGraphic(colorimage);
                     color[i][j]="blue";
+                    isok[i][j]=true;
                 }
                 if(i==3&&j==4){
                     Image playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
@@ -45,6 +46,7 @@ public class Othellocontroller implements Initializable {
                     colorimage.setFitWidth(27);
                     button.setGraphic(colorimage);
                     color[i][j]="black";
+                    isok[i][j]=true;
                 }
                 if(i==4&&j==3){
                     Image playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
@@ -53,6 +55,7 @@ public class Othellocontroller implements Initializable {
                     colorimage.setFitWidth(27);
                     button.setGraphic(colorimage);
                     color[i][j]="black";
+                    isok[i][j]=true;
                 }
                 if(i==4&&j==4){
                     Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
@@ -61,6 +64,7 @@ public class Othellocontroller implements Initializable {
                     colorimage.setFitWidth(27);
                     button.setGraphic(colorimage);
                     color[i][j]="blue";
+                    isok[i][j]=true;
                 }
                 button.setPrefHeight(43);
                 button.setPrefWidth(43);
@@ -78,19 +82,24 @@ public class Othellocontroller implements Initializable {
                 int a=i;
                 int b=j;
                 buttons[i][j].setOnAction(e->{
-                    checkup(a,b,turn);
-                    checkdown(a,b,turn);
-                    checkleft(a,b,turn);
-                    checkright(a,b,turn);
-                    checkDiameterupright(a,b,turn);
-                    checkDiameterupleft(a,b,turn);
-                    checkDiameterdownleft(a,b,turn);
-                    checkDiameterDownRight(a,b,turn);
-                    if (turn.equals("blue")&&check>0) {
-                        turn = "black";
-                    }else{
-                        if(check>0) {
-                            turn = "blue";
+                    if(isok[a][b]==false) {
+                        check=0;
+                        checkup(a, b, turn);
+                        checkdown(a, b, turn);
+                        checkleft(a, b, turn);
+                        checkright(a, b, turn);
+                        checkDiameterupright(a, b, turn);
+                        checkDiameterupleft(a, b, turn);
+                        checkDiameterdownleft(a, b, turn);
+                        checkDiameterDownRight(a, b, turn);
+                        if (turn.equals("blue") && check > 0) {
+                            System.out.println(check);
+                            turn = "black";
+                        } else {
+                            if (check > 0) {
+                                System.out.println(check+"else");
+                                turn = "blue";
+                            }
                         }
                     }
                 });
@@ -203,6 +212,7 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitWidth(27);
             color[h][g]=turn;
             buttons[h][g].setGraphic(colorimage);
+            isok[h][g]=true;
             h--;
             g++;
         }
@@ -229,6 +239,7 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitWidth(27);
             color[h][g]=turn;
             buttons[h][g].setGraphic(colorimage);
+            isok[h][g]=true;
             h--;
             g--;
         }
@@ -255,6 +266,7 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitWidth(27);
             color[h][g]=turn;
             buttons[h][g].setGraphic(colorimage);
+            isok[h][g]=true;
             h++;
             g--;
         }
@@ -281,6 +293,7 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitWidth(27);
             color[h][g]=turn;
             buttons[h][g].setGraphic(colorimage);
+            isok[h][g]=true;
             h++;
             g++;
         }
@@ -329,6 +342,7 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitWidth(27);
             color[l][j]=turn;
             buttons[l][j].setGraphic(colorimage);
+            isok[l][j]=true;
         }
     }
     public void coloringdown(int i,int j,int k){
@@ -351,6 +365,7 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitWidth(27);
             color[l][j]=turn;
             buttons[l][j].setGraphic(colorimage);
+            isok[l][j]=true;
         }
     }
     public void coloringright(int i,int j,int k){
@@ -373,6 +388,7 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitWidth(27);
             color[i][l]=turn;
             buttons[i][l].setGraphic(colorimage);
+            isok[i][l]=true;
         }
     }
     public void coloringleft(int i,int j,int k){
@@ -395,6 +411,7 @@ public class Othellocontroller implements Initializable {
             colorimage.setFitWidth(27);
             color[i][l]=turn;
             buttons[i][l].setGraphic(colorimage);
+            isok[i][l]=true;
         }
     }
 }

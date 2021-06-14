@@ -112,8 +112,8 @@ public class Othellocontroller implements Initializable {
                 int a=i;
                 int b=j;
                 buttons[i][j].setOnAction(e->{
-                    if(isok[a][b]==false) {
-                        turnOff();
+                    if(!isok[a][b]) {
+                        //turnOff();
                         pointP1=0;
                         pointP2=0;
                         check=0;
@@ -125,12 +125,17 @@ public class Othellocontroller implements Initializable {
                         checkDiameterupleft(a, b, turn);
                         checkDiameterdownleft(a, b, turn);
                         checkDiameterDownRight(a, b, turn);
-                        if (turn.equals("blue") && check > 0) {
-                            shouldOf[a][b]=true;
-                            turn = "black";
-                        } else {
+                        if (turn.equals("blue")) {
+                            if (check>0) {
+                                shouldOf[a][b] = true;
+                                turnOff();
+                                turn = "black";
+                            }
+                        }
+                        else if (turn.equals("black")){
                             if (check > 0) {
                                 shouldOf[a][b]=true;
+                                turnOff();
                                 turn = "blue";
                             }
                         }
@@ -139,7 +144,7 @@ public class Othellocontroller implements Initializable {
                         calculatePoints();
                         point1.setText(pointP1.toString());
                         point2.setText(pointP2.toString());
-                        if (pointP1+pointP2==64){
+                        if (range==0||pointP1+pointP2==64){
                             if (pointP1>pointP2) {
                                 winnerlbl.setText("Winner");
                                 winnertxt.setText("Player 1");
@@ -152,6 +157,7 @@ public class Othellocontroller implements Initializable {
                                 winnerlbl.setText("Draw");
                             }
                         }
+                        range=0;
                     }
                 });
             }
@@ -162,14 +168,13 @@ public class Othellocontroller implements Initializable {
             for (int j = 0; j <8 ; j++) {
                 buttons[i][j].setStyle("-fx-background-color: transparent");
                 buttons[i][j].setStyle("-fx-background-color: #D2691E ");
-
             }
         }
     }
     public void checkingRange(){
         for (int i = 0; i <8 ; i++) {
             for (int j = 0; j <8 ; j++) {
-                if (shouldOf[i][j]==false) {
+                if (!shouldOf[i][j]) {
                     check = 0;
                     checkLeftRange(i, j, turn);
                     if (check > 0) {
@@ -274,7 +279,6 @@ public class Othellocontroller implements Initializable {
                 break;
             }
             if(color[i][k].equals(turn)){
-
                 check++;
                 break;
             }

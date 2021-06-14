@@ -13,7 +13,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader=new FXMLLoader(this.getClass().getResource("view/Othello.fxml"));
         loader.load();
+        //scene.getStylesheets().add(getClass().getResource("BackGround.css").toExternalForm());
         primaryStage.setScene(new Scene(loader.getRoot()));
+
         primaryStage.show();
     }
 }

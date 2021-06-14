@@ -1,5 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox fx:id="field" alignment="CENTER" prefHeight="506.0" prefWidth="485.0" spacing="2.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Othellocontroller" />
+
+<BorderPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Othellocontroller">
+   <right>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="201.0" style="-fx-background-color: gray;">
+               <children>
+                  <Label alignment="CENTER" layoutX="37.0" text="Othello Reversi" textFill="#db1f33">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="81.0" layoutY="27.0">
+                     <image>
+                        <Image url="@image/circle.png" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="TOP_CENTER" layoutY="67.0" prefHeight="56.0" prefWidth="201.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1:">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="point1" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="81.0" layoutY="123.0">
+                     <image>
+                        <Image url="@image/circular-filled-shape.png" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="TOP_CENTER" layoutY="163.0" prefHeight="73.0" prefWidth="201.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2:">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="point2" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Label fx:id="winnerlbl" layoutX="101.0" layoutY="236.0">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="winnertxt" layoutX="101.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <VBox fx:id="field" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="436.0" styleClass="field" stylesheets="@BackGround.css" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

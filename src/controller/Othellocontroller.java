@@ -233,8 +233,11 @@ public class Othellocontroller implements Initializable {
             if(color[i][j+1].equals("")||color[i][j+1].equals(turn)){
                 break;
             }
+            if (color[i][k].equals(""))
+                break;
             if(color[i][k].equals(turn)){
                 coloringright(i,j,k);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -245,6 +248,8 @@ public class Othellocontroller implements Initializable {
             if (color[i][j + 1].equals("") || color[i][j + 1].equals(turn)) {
                 break;
             }
+            if (color[i][k].equals(""))
+                break;
             if(color[i][k].equals(turn)){
                 check++;
                 break;
@@ -266,8 +271,11 @@ public class Othellocontroller implements Initializable {
             if(color[i][j-1].equals("")||color[i][j-1].equals(turn)){
                 break;
             }
+            if (color[i][k].equals(""))
+                break;
             if(color[i][k].equals(turn)){
                 coloringleft(i,j,k);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -278,6 +286,8 @@ public class Othellocontroller implements Initializable {
             if (color[i][j - 1].equals("") || color[i][j - 1].equals(turn)) {
                 break;
             }
+            if (color[i][k].equals(""))
+                break;
             if(color[i][k].equals(turn)){
                 check++;
                 break;
@@ -290,8 +300,11 @@ public class Othellocontroller implements Initializable {
         for(k=i-2;k>=0&&l<8;){
             if (color[i-1][j+1].equals("")||color[i-1][j+1].equals(turn))
                 break;
+            if (color[k][l].equals(""))
+                break;
             if(color[k][l].equals(turn)){
                 coloringupright(i,j,k,l);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -304,6 +317,8 @@ public class Othellocontroller implements Initializable {
         int l = j + 2;
         for (k = i - 2; k >= 0 && l < 8; ) {
             if (color[i - 1][j + 1].equals("") || color[i - 1][j + 1].equals(turn))
+                break;
+            if (color[k][l].equals(""))
                 break;
             if(color[k][l].equals(turn)){
                 check++;
@@ -319,8 +334,11 @@ public class Othellocontroller implements Initializable {
         for(k=i+2;l>=0&&k<8;){
             if (color[i+1][j-1].equals("")||color[i+1][j-1].equals(turn))
                 break;
+            if (color[k][l].equals(""))
+                break;
             if(color[k][l].equals(turn)){
                 coloringDownLeft(i,j,k,l);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -333,6 +351,8 @@ public class Othellocontroller implements Initializable {
         int l=j-2;
         for(k=i+2;l>=0&&k<8;){
             if (color[i+1][j-1].equals("")||color[i+1][j-1].equals(turn))
+                break;
+            if (color[k][l].equals(""))
                 break;
             if(color[k][l].equals(turn)){
                 check++;
@@ -348,8 +368,11 @@ public class Othellocontroller implements Initializable {
         for(k=i+2;l<8&&k<8;){
             if (color[i+1][j+1].equals("")||color[i+1][j+1].equals(turn))
                 break;
+            if (color[k][l].equals(""))
+                break;
             if(color[k][l].equals(turn)){
                 coloringDownRight(i,j,k,l);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -362,6 +385,8 @@ public class Othellocontroller implements Initializable {
         int l=j+2;
         for(k=i+2;l<8&&k<8;){
             if (color[i+1][j+1].equals("")||color[i+1][j+1].equals(turn))
+                break;
+            if (color[k][l].equals(""))
                 break;
             if(color[k][l].equals(turn)){
                 check++;
@@ -377,8 +402,11 @@ public class Othellocontroller implements Initializable {
         for(k=i-2;k>=0&&l>=0;){
             if (color[i-1][j-1].equals("")||color[i-1][j-1].equals(turn))
                 break;
+            if (color[k][l].equals(""))
+                break;
             if(color[k][l].equals(turn)){
                 coloringUpLeft(i,j,k,l);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -391,6 +419,8 @@ public class Othellocontroller implements Initializable {
         int l=j-2;
         for(k=i-2;k>=0&&l>=0;){
             if (color[i-1][j-1].equals("")||color[i-1][j-1].equals(turn))
+                break;
+            if (color[k][l].equals(""))
                 break;
             if(color[k][l].equals(turn)){
                 check++;
@@ -513,8 +543,11 @@ public class Othellocontroller implements Initializable {
             if(color[i+1][j].equals("")||color[i+1][j].equals(turn)){
                 break;
             }
+            if (color[k][j].equals(""))
+                break;
             if(color[k][j].equals(turn)){
                 coloringdown(i,j,k);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -525,6 +558,8 @@ public class Othellocontroller implements Initializable {
             if(color[i+1][j].equals("")||color[i+1][j].equals(turn)){
                 break;
             }
+            if (color[k][j].equals(""))
+                break;
             if(color[k][j].equals(turn)){
                 check++;
                 break;
@@ -536,8 +571,11 @@ public class Othellocontroller implements Initializable {
             if(color[i-1][j].equals("")||color[i-1][j].equals(turn)){
                 break;
             }
+            if (color[k][j].equals(""))
+                break;
             if(color[k][j].equals(turn)){
                 coloringup(i,j,k);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -548,6 +586,8 @@ public class Othellocontroller implements Initializable {
             if(color[i-1][j].equals("")||color[i-1][j].equals(turn)){
                 break;
             }
+            if (color[k][j].equals(""))
+                break;
             if(color[k][j].equals(turn)){
                 check++;
                 break;

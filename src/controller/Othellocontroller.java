@@ -44,6 +44,10 @@ public class Othellocontroller implements Initializable {
     private VBox field;
    @FXML
    private HBox scoreBox;
+   @FXML
+   private Label blueTurn;
+   @FXML
+   private Label blackTurn;
     public static String turn="blue";
     Stage theStage;
     @Override
@@ -56,10 +60,6 @@ scoreBox.heightProperty().addListener(observable -> {
     mv.bind(Bindings.selectDouble(theStage.sceneProperty(),"height"));
     m.bind(Bindings.selectDouble(theStage.sceneProperty(),"width"));
 });
-scoreBox.heightProperty().addListener(observable -> {
-
-});
-
         for(int i=0;i<8;i++){
             HBox hBox=new HBox();
             for (int j = 0; j <8 ; j++) {
@@ -149,6 +149,8 @@ scoreBox.heightProperty().addListener(observable -> {
                                 shouldOf[a][b] = true;
                                 turnOff();
                                 turn = "black";
+                                blueTurn.setVisible(false);
+                                blackTurn.setVisible(true);
                             }
                         }
                         else if (turn.equals("black")){
@@ -156,6 +158,8 @@ scoreBox.heightProperty().addListener(observable -> {
                                 shouldOf[a][b]=true;
                                 turnOff();
                                 turn = "blue";
+                                blackTurn.setVisible(false);
+                                blueTurn.setVisible(true);
                             }
                         }
                         checkingRange();

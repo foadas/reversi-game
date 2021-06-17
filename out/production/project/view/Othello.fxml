@@ -38,14 +38,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <Label alignment="CENTER" text="Othello Reversi" textFill="#db1f33">
-                     <font>
-                        <Font name="System Bold Italic" size="18.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="100.0" />
-                     </padding>
-                  </Label>
+                 
                   <Label fx:id="blueTurn" text="turn:" textFill="#a6128c">
                      <font>
                         <Font name="System Bold" size="22.0" />

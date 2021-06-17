@@ -38,7 +38,6 @@
                         </Text>
                      </children>
                   </VBox>
-                 
                   <Label fx:id="blueTurn" text="turn:" textFill="#a6128c">
                      <font>
                         <Font name="System Bold" size="22.0" />

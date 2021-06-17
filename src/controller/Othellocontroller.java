@@ -711,4 +711,5 @@ scoreBox.heightProperty().addListener(observable -> {
     public void s(Stage stage){
         this.theStage=stage;
     }
+
 }

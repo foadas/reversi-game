@@ -52,7 +52,6 @@
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Text>
-                  <Button fx:id="bt" mnemonicParsing="false" text="Button" />
                   <Label fx:id="blueTurn" text="turn:" textFill="#a6128c">
                      <font>
                         <Font name="System Bold" size="22.0" />
@@ -120,6 +119,23 @@
       <VBox fx:id="field" alignment="TOP_CENTER" styleClass="field" stylesheets="@BackGround.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
-         </BorderPane.margin></VBox>
+         </BorderPane.margin>
+         <children>
+            <Button fx:id="bt" mnemonicParsing="false" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="48.0">
+                     <image>
+                        <Image url="@image/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </Button>
+         </children></VBox>
    </center>
 </BorderPane>

@@ -43,7 +43,7 @@ public class Othellocontroller implements Initializable {
     @FXML
     private VBox field;
    @FXML
-   private HBox scoreBox;
+   private VBox scoreBox;
    @FXML
    private Label blueTurn;
    @FXML
@@ -720,43 +720,6 @@ scoreBox.heightProperty().addListener(observable -> {
         this.theStage = stage;
     }
     public void resetGame(){
-            Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorimage = new ImageView(playimage);
-            colorimage.setFitHeight(45);
-            colorimage.setFitWidth(45);
-            buttons[3][3].setGraphic(colorimage);
-            color[3][3]="blue";
-            shouldOf[3][3]=true;
-            isok[3][3]=true;
-
-             playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorimage = new ImageView(playimage);
-            colorimage.setFitHeight(45);
-            colorimage.setFitWidth(45);
-            buttons[3][4].setGraphic(colorimage);
-            color[3][4]="black";
-            shouldOf[3][4]=true;
-            isok[3][4]=true;
-
-             playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorimage = new ImageView(playimage);
-            colorimage.setFitHeight(45);
-            colorimage.setFitWidth(45);
-            buttons[4][3].setGraphic(colorimage);
-            color[4][3]="black";
-            shouldOf[4][3]=true;
-            isok[4][3]=true;
-
-             playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorimage = new ImageView(playimage);
-            colorimage.setFitHeight(45);
-            colorimage.setFitWidth(45);
-            buttons[4][4].setGraphic(colorimage);
-            color[4][4]="blue";
-            shouldOf[4][4]=true;
-            isok[4][4]=true;
-
-
         for (int i = 0; i <8 ; i++) {
             for (int j = 0; j <8 ; j++) {
                     shouldOf[i][j]=false;
@@ -765,5 +728,41 @@ scoreBox.heightProperty().addListener(observable -> {
                     buttons[i][j].setGraphic(null);
             }
         }
+        Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+        colorimage = new ImageView(playimage);
+        colorimage.setFitHeight(45);
+        colorimage.setFitWidth(45);
+        buttons[3][3].setGraphic(colorimage);
+        color[3][3]="blue";
+        shouldOf[3][3]=true;
+        isok[3][3]=true;
+
+        playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+        colorimage = new ImageView(playimage);
+        colorimage.setFitHeight(45);
+        colorimage.setFitWidth(45);
+        buttons[3][4].setGraphic(colorimage);
+        color[3][4]="black";
+        shouldOf[3][4]=true;
+        isok[3][4]=true;
+
+        playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+        colorimage = new ImageView(playimage);
+        colorimage.setFitHeight(45);
+        colorimage.setFitWidth(45);
+        buttons[4][3].setGraphic(colorimage);
+        color[4][3]="black";
+        shouldOf[4][3]=true;
+        isok[4][3]=true;
+        playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+        colorimage = new ImageView(playimage);
+        colorimage.setFitHeight(45);
+        colorimage.setFitWidth(45);
+        buttons[4][4].setGraphic(colorimage);
+        color[4][4]="blue";
+        shouldOf[4][4]=true;
+        isok[4][4]=true;
+        turnOff();
+        checkingRange();
     }
 }

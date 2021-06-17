@@ -39,7 +39,7 @@ public class Othellocontroller implements Initializable {
     @FXML
     private VBox field;
    @FXML
-   private HBox scoreBox;
+   private VBox scoreBox;
    @FXML
    private Label blueTurn;
    @FXML
@@ -722,7 +722,6 @@ scoreBox.heightProperty().addListener(observable -> {
                     color[i][j]="";
                     buttons[i][j].setGraphic(null);
             }
-
         }
         Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
         colorimage = new ImageView(playimage);
@@ -758,5 +757,7 @@ scoreBox.heightProperty().addListener(observable -> {
         color[4][4]="blue";
         shouldOf[4][4]=true;
         isok[4][4]=true;
+        turnOff();
+        checkingRange();
     }
 }

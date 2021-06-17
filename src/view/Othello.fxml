@@ -111,7 +111,7 @@
                   <Insets />
                </VBox.margin>
                <padding>
-                  <Insets bottom="50.0" />
+                  <Insets bottom="20.0" />
                </padding>
             </Button>
          </children></VBox>

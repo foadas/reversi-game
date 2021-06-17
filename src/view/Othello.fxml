@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<<<<<<< HEAD
-=======
 <?import javafx.scene.control.Button?>
->>>>>>> dfdbcf926c220f22f33cd33fddb7a665edb14f92
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,7 +17,6 @@
          <children>
             <VBox alignment="CENTER" style="-fx-background-color: grey;">
                <children>
-<<<<<<< HEAD
                   <VBox alignment="TOP_CENTER" prefHeight="174.0" prefWidth="201.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="TOP" prefHeight="49.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
@@ -43,7 +39,6 @@
                         </Text>
                      </children>
                   </VBox>
-=======
                   <Label alignment="CENTER" prefHeight="50.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
@@ -58,7 +53,6 @@
                      </font>
                   </Text>
                   <Button fx:id="bt" mnemonicParsing="false" text="Button" />
->>>>>>> dfdbcf926c220f22f33cd33fddb7a665edb14f92
                   <Label fx:id="blueTurn" text="turn:" textFill="#a6128c">
                      <font>
                         <Font name="System Bold" size="22.0" />

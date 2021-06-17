@@ -39,7 +39,7 @@ public class Othellocontroller implements Initializable {
     private Button reset;
 
     @FXML
-    private Text turntxt;
+    private Text winnertxt;
     @FXML
     private VBox field;
    @FXML
@@ -175,20 +175,11 @@ scoreBox.heightProperty().addListener(observable -> {
                         if (range==0||pointP1+pointP2==64){
                             blackTurn.setVisible(false);
                             blueTurn.setVisible(false);
-                            if (pointP1>pointP2) {
-<<<<<<< HEAD
-                                winnerlbl.setText("Winner");
-                                turntxt.setText("Player 1");
-                            }
-                            else if(pointP2>pointP1){
-                                winnerlbl.setText("Winner");
-                                turntxt.setText("Player 2");
-=======
+                            if(pointP2>pointP1){
                                 winnertxt.setText("Player 1 is the winner!");
                             }
                             else if(pointP2>pointP1){
                                 winnertxt.setText("Player 2 is the winner!");
->>>>>>> dfdbcf926c220f22f33cd33fddb7a665edb14f92
                             }
                             else{
                                winnertxt.setText("Draw!");
@@ -725,12 +716,9 @@ scoreBox.heightProperty().addListener(observable -> {
             isok[i][l]=true;
         }
     }
-    public void s(Stage stage){
-        this.theStage=stage;
+    public void s(Stage stage) {
+        this.theStage = stage;
     }
-<<<<<<< HEAD
-
-=======
     public void resetGame(){
             Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
             colorimage = new ImageView(playimage);
@@ -778,5 +766,4 @@ scoreBox.heightProperty().addListener(observable -> {
             }
         }
     }
->>>>>>> dfdbcf926c220f22f33cd33fddb7a665edb14f92
 }

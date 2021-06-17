@@ -20,6 +20,14 @@
                         <Insets bottom="100.0" />
                      </padding>
                   </Label>
+                  <Label fx:id="blueTurn" text="turn:" textFill="#a6128c">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="100.0" />
+                     </VBox.margin>
+                  </Label>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
                         <Image url="@image/circle.png" />
@@ -39,6 +47,14 @@
                         </Text>
                      </children>
                   </HBox>
+                  <Label fx:id="blackTurn" text="turn:" textFill="#a6128c" visible="false">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="100.0" />
+                     </VBox.margin>
+                  </Label>
                   <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
                         <Image url="@image/circular-filled-shape.png" />

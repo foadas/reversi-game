@@ -35,8 +35,7 @@ public class Othellocontroller implements Initializable {
     @FXML
     private Text point2;
 
-    @FXML
-    private Label winnerlbl;
+
 
     @FXML
     private Text winnertxt;
@@ -166,16 +165,17 @@ scoreBox.heightProperty().addListener(observable -> {
                         point1.setText(pointP1.toString());
                         point2.setText(pointP2.toString());
                         if (range==0||pointP1+pointP2==64){
+                            blackTurn.setVisible(false);
+                            blueTurn.setVisible(false);
                             if (pointP1>pointP2) {
-                                winnerlbl.setText("Winner");
-                                winnertxt.setText("Player 1");
+                                winnertxt.setText("Player 1 is the winner!");
                             }
                             else if(pointP2>pointP1){
-                                winnerlbl.setText("Winner");
-                                winnertxt.setText("Player 2");
+                                winnertxt.setText("Player 2 is the winner!");
                             }
                             else{
-                                winnerlbl.setText("Draw");
+                               winnertxt.setText("Draw!");
+
                             }
                         }
                         range=0;

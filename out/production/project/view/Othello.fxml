@@ -17,28 +17,6 @@
          <children>
             <VBox alignment="CENTER" style="-fx-background-color: grey;">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="174.0" prefWidth="201.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="TOP" prefHeight="49.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
-                           <font>
-                              <Font name="System Bold Italic" size="18.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="50.0" />
-                           </padding>
-                        </Label>
-                        <Label fx:id="winnerlbl" alignment="CENTER" contentDisplay="TOP" layoutX="47.0" layoutY="10.0" prefHeight="5.0" prefWidth="89.0" textFill="#221d1e">
-                           <font>
-                              <Font name="System Bold Italic" size="18.0" />
-                           </font>
-                        </Label>
-                        <Text fx:id="turntxt" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="System Bold Italic" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </VBox>
                   <Label alignment="CENTER" prefHeight="50.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />

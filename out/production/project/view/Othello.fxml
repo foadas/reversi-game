@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<<<<<<< HEAD
+=======
+<?import javafx.scene.control.Button?>
+>>>>>>> dfdbcf926c220f22f33cd33fddb7a665edb14f92
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,6 +20,7 @@
          <children>
             <VBox alignment="CENTER" style="-fx-background-color: grey;">
                <children>
+<<<<<<< HEAD
                   <VBox alignment="TOP_CENTER" prefHeight="174.0" prefWidth="201.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="TOP" prefHeight="49.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
@@ -38,6 +43,22 @@
                         </Text>
                      </children>
                   </VBox>
+=======
+                  <Label alignment="CENTER" prefHeight="50.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="100.0" />
+                     </padding>
+                  </Label>
+                  <Text fx:id="winnertxt" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="bt" mnemonicParsing="false" text="Button" />
+>>>>>>> dfdbcf926c220f22f33cd33fddb7a665edb14f92
                   <Label fx:id="blueTurn" text="turn:" textFill="#a6128c">
                      <font>
                         <Font name="System Bold" size="22.0" />
@@ -78,20 +99,24 @@
                         <Image url="@image/circular-filled-shape.png" />
                      </image>
                   </ImageView>
-                  <HBox alignment="TOP_CENTER" prefHeight="73.0" prefWidth="201.0">
+                  <VBox alignment="CENTER">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2:">
-                           <font>
-                              <Font name="System Bold Italic" size="14.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="point2" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="System Bold Italic" size="14.0" />
-                           </font>
-                        </Text>
+                        <HBox alignment="TOP_CENTER" prefHeight="73.0" prefWidth="201.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="point2" strokeType="OUTSIDE" strokeWidth="0.0">
+                                 <font>
+                                    <Font name="System Bold Italic" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
          </children>

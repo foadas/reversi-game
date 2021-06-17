@@ -36,7 +36,7 @@ public class Othellocontroller implements Initializable {
     private Text point2;
 
     @FXML
-    private Label winnerlbl;
+    private Button reset;
 
     @FXML
     private Text turntxt;
@@ -48,10 +48,16 @@ public class Othellocontroller implements Initializable {
    private Label blueTurn;
    @FXML
    private Label blackTurn;
+   @FXML
+   private Button bt;
     public static String turn="blue";
     Stage theStage;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        bt.setOnAction(event -> {
+            System.out.println(1);
+            resetGame();
+        });
 scoreBox.heightProperty().addListener(observable -> {
     DoubleProperty mvh = scoreBox.prefHeightProperty();
     mvh.bind(Bindings.selectDouble(theStage.sceneProperty(),"height"));
@@ -124,6 +130,7 @@ scoreBox.heightProperty().addListener(observable -> {
         calculatePoints();
         point1.setText(pointP1.toString());
         point2.setText(pointP2.toString());
+
         for (int i = 0; i <8 ; i++) {
             for (int j = 0; j <8 ; j++) {
                 int a=i;
@@ -166,16 +173,26 @@ scoreBox.heightProperty().addListener(observable -> {
                         point1.setText(pointP1.toString());
                         point2.setText(pointP2.toString());
                         if (range==0||pointP1+pointP2==64){
+                            blackTurn.setVisible(false);
+                            blueTurn.setVisible(false);
                             if (pointP1>pointP2) {
+<<<<<<< HEAD
                                 winnerlbl.setText("Winner");
                                 turntxt.setText("Player 1");
                             }
                             else if(pointP2>pointP1){
                                 winnerlbl.setText("Winner");
                                 turntxt.setText("Player 2");
+=======
+                                winnertxt.setText("Player 1 is the winner!");
+                            }
+                            else if(pointP2>pointP1){
+                                winnertxt.setText("Player 2 is the winner!");
+>>>>>>> dfdbcf926c220f22f33cd33fddb7a665edb14f92
                             }
                             else{
-                                winnerlbl.setText("Draw");
+                               winnertxt.setText("Draw!");
+
                             }
                         }
                         range=0;
@@ -711,5 +728,55 @@ scoreBox.heightProperty().addListener(observable -> {
     public void s(Stage stage){
         this.theStage=stage;
     }
+<<<<<<< HEAD
 
+=======
+    public void resetGame(){
+            Image playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(45);
+            colorimage.setFitWidth(45);
+            buttons[3][3].setGraphic(colorimage);
+            color[3][3]="blue";
+            shouldOf[3][3]=true;
+            isok[3][3]=true;
+
+             playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(45);
+            colorimage.setFitWidth(45);
+            buttons[3][4].setGraphic(colorimage);
+            color[3][4]="black";
+            shouldOf[3][4]=true;
+            isok[3][4]=true;
+
+             playimage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(45);
+            colorimage.setFitWidth(45);
+            buttons[4][3].setGraphic(colorimage);
+            color[4][3]="black";
+            shouldOf[4][3]=true;
+            isok[4][3]=true;
+
+             playimage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+            colorimage = new ImageView(playimage);
+            colorimage.setFitHeight(45);
+            colorimage.setFitWidth(45);
+            buttons[4][4].setGraphic(colorimage);
+            color[4][4]="blue";
+            shouldOf[4][4]=true;
+            isok[4][4]=true;
+
+
+        for (int i = 0; i <8 ; i++) {
+            for (int j = 0; j <8 ; j++) {
+                    shouldOf[i][j]=false;
+                    isok[i][j]=false;
+                    color[i][j]="";
+                    buttons[i][j].setGraphic(null);
+            }
+        }
+    }
+>>>>>>> dfdbcf926c220f22f33cd33fddb7a665edb14f92
 }

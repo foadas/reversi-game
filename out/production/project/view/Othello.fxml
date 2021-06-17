@@ -102,9 +102,6 @@
                      </image>
                   </ImageView>
                </graphic>
-               <padding>
-                  <Insets bottom="5.0" />
-               </padding>
             </Button>
          </children>
          <opaqueInsets>

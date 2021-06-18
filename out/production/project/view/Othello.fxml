@@ -13,7 +13,7 @@
 
 <BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Othellocontroller">
    <right>
-      <VBox fx:id="scoreBox" alignment="CENTER" style="-fx-background-color: grey;">
+      <VBox fx:id="scoreBox" alignment="CENTER" style="-fx-background-color: gray;">
          <children>
             <Label alignment="CENTER" prefHeight="50.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
                <font>

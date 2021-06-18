@@ -11,9 +11,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Othellocontroller">
+<BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Othellocontroller">
    <right>
+<<<<<<< HEAD
       <VBox fx:id="scoreBox" alignment="CENTER" style="-fx-background-color: gray;">
+=======
+      <VBox fx:id="scoreBox" alignment="CENTER" prefHeight="400.0" prefWidth="170.0" snapToPixel="false" style="-fx-background-color: grey;" BorderPane.alignment="CENTER_RIGHT">
+>>>>>>> 63fb1e97c2959edaf13a168e8156b85a548c3533
          <children>
             <Label alignment="CENTER" prefHeight="50.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
                <font>
@@ -33,7 +37,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
                <VBox.margin>
-                  <Insets right="100.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
             <ImageView fitHeight="40.0" fitWidth="40.0">
@@ -55,12 +59,12 @@
                   </Text>
                </children>
             </HBox>
-            <Label fx:id="blackTurn" text="turn:" textFill="#a6128c" visible="false">
+            <Label fx:id="blackTurn" text="turn:" textFill="#a6128c">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
                <VBox.margin>
-                  <Insets right="100.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
             <ImageView fitHeight="40.0" fitWidth="40.0">
@@ -86,7 +90,7 @@
       </VBox>
    </right>
    <center>
-      <VBox fx:id="field" alignment="TOP_CENTER" styleClass="field" stylesheets="@BackGround.css" BorderPane.alignment="CENTER">
+      <VBox fx:id="field" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="26.0" snapToPixel="false" stylesheets="@BackGround.css" BorderPane.alignment="TOP_CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
@@ -102,16 +106,11 @@
                      </image>
                   </ImageView>
                </graphic>
-               <padding>
-                  <Insets bottom="5.0" />
-               </padding>
             </Button>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <padding>
-            <Insets bottom="40.0" />
-         </padding></VBox>
+      </VBox>
    </center>
 </BorderPane>

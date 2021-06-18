@@ -1,4 +1,4 @@
-import controller.Othellocontroller;
+import controller.OthelloController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader=new FXMLLoader(this.getClass().getResource("view/Othello.fxml"));
         loader.load();
-        Othellocontroller othellocontroller= loader.getController();
+        OthelloController othellocontroller= loader.getController();
         othellocontroller.s(primaryStage);
         //scene.getStylesheets().add(getClass().getResource("BackGround.css").toExternalForm());
         primaryStage.setScene(new Scene(loader.getRoot()));

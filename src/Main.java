@@ -18,8 +18,8 @@ public class Main extends Application {
         othellocontroller.s(primaryStage);
         //scene.getStylesheets().add(getClass().getResource("BackGround.css").toExternalForm());
         primaryStage.setScene(new Scene(loader.getRoot()));
-        primaryStage.setMinWidth(930);
-        primaryStage.setMinHeight(750);
+        primaryStage.setMinWidth(1000);
+        primaryStage.setMinHeight(850);
         primaryStage.show();
     }
 }

@@ -50,9 +50,8 @@ public class Othellocontroller implements Initializable {
     Stage theStage;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        bt.setOnAction(event -> {
-            resetGame();
-        });
+        blackTurn.setVisible(false);
+        bt.setOnAction(event -> resetGame());
 scoreBox.heightProperty().addListener(observable -> {
     DoubleProperty mvh = scoreBox.prefHeightProperty();
     mvh.bind(Bindings.selectDouble(theStage.sceneProperty(),"height"));
@@ -111,7 +110,7 @@ scoreBox.heightProperty().addListener(observable -> {
                 button.setStyle("-fx-background-color: transparent");
                 button.setStyle("-fx-background-color: #D2691E ");
                 button.getStyleClass().add("button");
-                button.getStylesheets().add("BackGround.css");
+                //button.getStylesheets().add("BackGround.css");
                 buttons[i][j]=button;
                 hBox.getChildren().add(button);
             }
@@ -149,8 +148,8 @@ scoreBox.heightProperty().addListener(observable -> {
                                 shouldOf[a][b] = true;
                                 turnOff();
                                 turn = "black";
-                                blueTurn.setVisible(false);
                                 blackTurn.setVisible(true);
+                                 blueTurn.setVisible(false);
                             }
                         }
                         else if (turn.equals("black")){
@@ -759,5 +758,14 @@ scoreBox.heightProperty().addListener(observable -> {
         isok[4][4]=true;
         turnOff();
         checkingRange();
+        blackTurn.setVisible(false);
+        blueTurn.setVisible(true);
+        turn="blue";
+        pointP2=2;
+        pointP1=2;
+        point1.setText(pointP1.toString());
+        point2.setText(pointP2.toString());
+        winnertxt.setText("");
+
     }
 }

@@ -11,13 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Othellocontroller">
+<BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OthelloController">
    <right>
-<<<<<<< HEAD
-      <VBox fx:id="scoreBox" alignment="CENTER" style="-fx-background-color: gray;">
-=======
       <VBox fx:id="scoreBox" alignment="CENTER" prefHeight="400.0" prefWidth="170.0" snapToPixel="false" style="-fx-background-color: grey;" BorderPane.alignment="CENTER_RIGHT">
->>>>>>> 63fb1e97c2959edaf13a168e8156b85a548c3533
          <children>
             <Label alignment="CENTER" prefHeight="50.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
                <font>
@@ -27,7 +23,7 @@
                   <Insets bottom="100.0" />
                </padding>
             </Label>
-            <Text fx:id="winnertxt" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="winnerTxt" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>

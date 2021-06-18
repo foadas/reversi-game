@@ -770,5 +770,4 @@ public class OthelloController implements Initializable {
         colorImage.setFitWidth(45);
         button.setGraphic(colorImage);
     }
-
 }

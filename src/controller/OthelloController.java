@@ -19,15 +19,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class OthelloController implements Initializable {
-    public static boolean [][] isOk =new boolean[8][8];
-    public static boolean [][]shouldOf=new boolean[8][8];
-    public static int check=0;
-    public static String [][]color=new String[8][8];
-    public static Button [][]buttons=new Button[8][8];
-    public static ImageView colorImage;
-    public static Integer pointP1=0;
-    public static Integer pointP2=0;
-    public static int range=0;
+    public boolean [][] isOk =new boolean[8][8];
+    public boolean [][]shouldOf=new boolean[8][8];
+    public int check=0;
+    public String [][]color=new String[8][8];
+    public Button [][]buttons=new Button[8][8];
+    public ImageView colorImage;
+    public Integer pointP1=0;
+    public Integer pointP2=0;
+    public int range=0;
+    public  String turn="blue";
     @FXML
     private Text point1;
 
@@ -45,7 +46,6 @@ public class OthelloController implements Initializable {
     private Label blackTurn;
     @FXML
     private Button bt;
-    public static String turn="blue";
     Stage theStage;
     Image playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
     Image playImage2 = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
@@ -62,65 +62,13 @@ public class OthelloController implements Initializable {
             mv.bind(Bindings.selectDouble(theStage.sceneProperty(),"height"));
             m.bind(Bindings.selectDouble(theStage.sceneProperty(),"width"));
         });
-        for(int i=0;i<8;i++){
-            HBox hBox=new HBox();
-            for (int j = 0; j <8 ; j++) {
-                Button button=new Button("");
-                color[i][j]="";
-                if(i==3&&j==3){
-                    blueStart(button);
-                    color[i][j]="blue";
-                    shouldOf[i][j]=true;
-                    isOk[i][j]=true;
-                }
-                if(i==3&&j==4){
-                    blackStart(button);
-                    color[i][j]="black";
-                    shouldOf[i][j]=true;
-                    isOk[i][j]=true;
-                }
-                if(i==4&&j==3){
-                    blackStart(button);
-                    color[i][j]="black";
-                    shouldOf[i][j]=true;
-                    isOk[i][j]=true;
-                }
-                if(i==4&&j==4){
-                    colorImage = new ImageView(playImage);
-                    colorImage.setFitHeight(45);
-                    colorImage.setFitWidth(45);
-                    button.setGraphic(colorImage);
-                    color[i][j]="blue";
-                    shouldOf[i][j]=true;
-                    isOk[i][j]=true;
-                }
-                button.setPrefHeight(70);
-                button.setPrefWidth(70);
-                button.setStyle("-fx-background-color: transparent");
-                button.setStyle("-fx-background-color: #D2691E ");
-                button.getStyleClass().add("button");
-                //button.getStylesheets().add("BackGround.css");
-                buttons[i][j]=button;
-                hBox.getChildren().add(button);
-            }
-            hBox.setSpacing(2);
-            hBox.setAlignment(Pos.CENTER);
-            field.getChildren().add(hBox);
-        }
-        field.setSpacing(2);
-        field.setAlignment(Pos.CENTER);
-        checkingRange();
-        calculatePoints();
-        point1.setText(pointP1.toString());
-        point2.setText(pointP2.toString());
-
+        startGame();
         for (int i = 0; i <8 ; i++) {
             for (int j = 0; j <8 ; j++) {
                 int a=i;
                 int b=j;
                 buttons[i][j].setOnAction(e->{
                     if(!isOk[a][b]) {
-                        //turnOff();
                         pointP1=0;
                         pointP2=0;
                         check=0;
@@ -768,5 +716,54 @@ public class OthelloController implements Initializable {
         colorImage.setFitHeight(45);
         colorImage.setFitWidth(45);
         button.setGraphic(colorImage);
+    }
+    public void startGame(){
+        for(int i=0;i<8;i++){
+            HBox hBox=new HBox();
+            for (int j = 0; j <8 ; j++) {
+                Button button=new Button("");
+                color[i][j]="";
+                if(i==3&&j==3){
+                    blueStart(button);
+                    color[i][j]="blue";
+                    shouldOf[i][j]=true;
+                    isOk[i][j]=true;
+                }
+                if(i==3&&j==4){
+                    blackStart(button);
+                    color[i][j]="black";
+                    shouldOf[i][j]=true;
+                    isOk[i][j]=true;
+                }
+                if(i==4&&j==3){
+                    blackStart(button);
+                    color[i][j]="black";
+                    shouldOf[i][j]=true;
+                    isOk[i][j]=true;
+                }
+                if(i==4&&j==4){
+                    blueStart(button);
+                    color[i][j]="blue";
+                    shouldOf[i][j]=true;
+                    isOk[i][j]=true;
+                }
+                button.setPrefHeight(70);
+                button.setPrefWidth(70);
+                button.setStyle("-fx-background-color: transparent");
+                button.setStyle("-fx-background-color: #D2691E ");
+                button.getStyleClass().add("button");
+                buttons[i][j]=button;
+                hBox.getChildren().add(button);
+            }
+            hBox.setSpacing(2);
+            hBox.setAlignment(Pos.CENTER);
+            field.getChildren().add(hBox);
+        }
+        field.setSpacing(2);
+        field.setAlignment(Pos.CENTER);
+        checkingRange();
+        calculatePoints();
+        point1.setText(pointP1.toString());
+        point2.setText(pointP2.toString());
     }
 }

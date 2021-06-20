@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="loginfield" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Logincontroller">
-    <children>
-        <VBox layoutX="174.0" layoutY="121.0" prefHeight="25.0" prefWidth="239.0">
-            <children>
-                <TextField fx:id="player1user" />
-            </children>
-        </VBox>
-        <VBox layoutX="174.0" layoutY="174.0" prefHeight="25.0" prefWidth="239.0">
-            <children>
-                <TextField fx:id="player2user" />
-            </children>
-        </VBox>
-        <Button fx:id="playbtn" layoutX="216.0" layoutY="239.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-radius: 45;" text="Play">
+<VBox fx:id="loginfield" alignment="CENTER" prefHeight="255.0" prefWidth="392.0" spacing="15.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Logincontroller">
+      <children>
+      <Label alignment="CENTER" prefHeight="17.0" prefWidth="142.0" text="start">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="20.0" />
+         </VBox.margin></Label>
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="player1 :">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+                <TextField fx:id="player1user" prefHeight="25.0" prefWidth="185.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="player2 :">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+                <TextField fx:id="player2user" prefHeight="25.0" prefWidth="184.0" />
+         </children>
+      </HBox>
+        <Button fx:id="playbtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-radius: 45;" text="Play">
             <font>
                 <Font name="System Bold Italic" size="16.0" />
             </font>
+         <VBox.margin>
+            <Insets left="30.0" />
+         </VBox.margin>
         </Button>
-    </children>
-</AnchorPane>
+      </children>
+  </VBox>

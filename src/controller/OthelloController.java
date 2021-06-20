@@ -53,7 +53,7 @@ public class OthelloController implements Initializable {
     @FXML
     private Label blackTurn;
     @FXML
-    private Button bt;
+    private Button  bt;
     @FXML
     private Text player2Lbl;
     @FXML
@@ -89,7 +89,6 @@ public class OthelloController implements Initializable {
                         pointP2=0;
                         check=0;
                         checkup(a, b, turn);
-                        System.out.println(player2Lbl.getText());
                         checkDown(a, b, turn);
                         checkLeft(a, b, turn);
                         checkRight(a, b, turn);

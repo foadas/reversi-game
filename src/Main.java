@@ -16,6 +16,7 @@ public class Main extends Application {
         FXMLLoader loader=new FXMLLoader(this.getClass().getResource("view/Othello.fxml"));
         loader.load();
         OthelloController othellocontroller= loader.getController();
+        Logincontroller.Logincontroller(othellocontroller);
         othellocontroller.makebuttonsunselectable();
         othellocontroller.s(primaryStage);
         //scene.getStylesheets().add(getClass().getResource("BackGround.css").toExternalForm());
@@ -27,13 +28,12 @@ public class Main extends Application {
         fxmlLoader.load();
         Stage stage=new Stage();
         Logincontroller logincontroller=fxmlLoader.getController();
-        logincontroller.Logincontroller(othellocontroller);
         logincontroller.setStage(stage);
         stage.setScene(new Scene(fxmlLoader.getRoot()));
         stage.show();
         stage.setAlwaysOnTop(true);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("This window cannot be closed");
-        stage.setOnCloseRequest(event -> event.consume());
+        //Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //alert.setContentText("This window cannot be closed");
+        stage.setOnCloseRequest(event -> primaryStage.close());
     }
 }

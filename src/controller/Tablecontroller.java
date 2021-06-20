@@ -40,15 +40,7 @@ public class Tablecontroller implements Initializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-<<<<<<< HEAD
 
-=======
-        try{
-            ois.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
->>>>>>> d9c170646f052beeb71fd1f12c68ffc0ca9990cc
         sortList(othelloController.playerList);
         for (int i = 0; i <othelloController.playerList.size() ; i++) {
             table.getItems().add(othelloController.playerList.get(i));

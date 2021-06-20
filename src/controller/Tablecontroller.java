@@ -36,7 +36,7 @@ public class Tablecontroller implements Initializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try {
+        try{
             ois.close();
         } catch (IOException e) {
             e.printStackTrace();

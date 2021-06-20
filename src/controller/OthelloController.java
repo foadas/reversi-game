@@ -135,7 +135,7 @@ public class OthelloController implements Initializable {
                                     winnerTxt.setText(player1Lbl.getText() + " is the winner!");
                                     //tablecontroller.getplayers(player1,player2);
                                     try {
-                                        addToFile(player1, player2);
+                                        addToFile();
                                     } catch (IOException ioException) {
                                         ioException.printStackTrace();
                                     } catch (ClassNotFoundException classNotFoundException) {
@@ -145,7 +145,7 @@ public class OthelloController implements Initializable {
                                     winnerTxt.setText(player2Lbl.getText() + " is the winner!");
                                     //tablecontroller.getplayers(player1,player2);
                                     try {
-                                        addToFile(player1, player2);
+                                        addToFile();
                                     } catch (IOException ioException) {
                                         ioException.printStackTrace();
                                     } catch (ClassNotFoundException classNotFoundException) {
@@ -155,7 +155,7 @@ public class OthelloController implements Initializable {
                                     winnerTxt.setText("Draw!");
                                     //tablecontroller.getplayers(player1,player2);
                                     try {
-                                        addToFile(player1, player2);
+                                        addToFile();
                                     } catch (IOException ioException) {
                                         ioException.printStackTrace();
                                     } catch (ClassNotFoundException classNotFoundException) {
@@ -181,7 +181,7 @@ public class OthelloController implements Initializable {
                                         winnerTxt.setText(player1Lbl.getText() + " is the winner!");
                                         //tablecontroller.getplayers(player1,player2);
                                         try {
-                                            addToFile(player1, player2);
+                                            addToFile();
                                         } catch (IOException ioException) {
                                             ioException.printStackTrace();
                                         } catch (ClassNotFoundException classNotFoundException) {
@@ -191,7 +191,7 @@ public class OthelloController implements Initializable {
                                         winnerTxt.setText(player2Lbl.getText() + " is the winner!");
                                         //tablecontroller.getplayers(player1,player2);
                                         try {
-                                            addToFile(player1, player2);
+                                            addToFile();
                                         } catch (IOException ioException) {
                                             ioException.printStackTrace();
                                         } catch (ClassNotFoundException classNotFoundException) {
@@ -201,7 +201,7 @@ public class OthelloController implements Initializable {
                                         winnerTxt.setText("Draw!");
                                         //tablecontroller.getplayers(player1,player2);
                                         try {
-                                            addToFile(player1, player2);
+                                            addToFile();
                                         } catch (IOException ioException) {
                                             ioException.printStackTrace();
                                         } catch (ClassNotFoundException classNotFoundException) {
@@ -943,14 +943,17 @@ public class OthelloController implements Initializable {
     public void setNames(Player p1, Player p2){
         player1Lbl.setText(p1.getUser()+":");
         player2Lbl.setText(p2.getUser()+":");
+        player1=new Player();
         player1=p1;
+        player2=new Player();
         player2=p2;
-        playerList.add(p1);
-        playerList.add(p2);
+
         //tablecontroller.getplayers(p1,p2);
     }
-    public void addToFile(Player player1,Player player2) throws IOException, ClassNotFoundException {
+    public void addToFile() throws IOException, ClassNotFoundException {
         File f = new File("MyFile.txt");
+        playerList.add(player1);
+        playerList.add(player2);
         FileOutputStream fos = null;
         fos = new FileOutputStream(f);
         ObjectOutputStream oos = new ObjectOutputStream(fos);

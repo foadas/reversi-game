@@ -27,7 +27,7 @@ public class Logincontroller implements Initializable {
     @FXML
     private Button playbtn;
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources){
         playbtn.setOnAction(e->{
             if(!(player1user.getText().isEmpty()||player2user.getText().isEmpty())) {
                 if(!(player1user.getText().equals(player2user.getText()))) {

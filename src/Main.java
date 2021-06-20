@@ -32,6 +32,7 @@ public class Main extends Application {
         stage.setScene(new Scene(fxmlLoader.getRoot()));
         stage.show();
         stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
         //Alert alert = new Alert(Alert.AlertType.INFORMATION);
         //alert.setContentText("This window cannot be closed");
         stage.setOnCloseRequest(event -> primaryStage.close());

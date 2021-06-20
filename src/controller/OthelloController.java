@@ -254,6 +254,7 @@ public class OthelloController implements Initializable {
             }
         }
         scoreBoardbtn.setOnAction(e->{
+
             FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Table.fxml"));
             try {
                 loader.load();
@@ -265,6 +266,7 @@ public class OthelloController implements Initializable {
             Tablecontroller tablecontroller1=loader.getController();
             tablecontroller1.getplayers(this,player1,player2);
             stage.show();
+            stage.setResizable(false);
         });
         newGamebtn.setOnAction(e->{
             FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Login.fxml"));
@@ -956,8 +958,8 @@ public class OthelloController implements Initializable {
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(playerList);
         oos.close();
-        FileInputStream fis = new FileInputStream(f);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        ois.close();
+        //FileInputStream fis = new FileInputStream(f);
+        //ObjectInputStream ois = new ObjectInputStream(fis);
+       // ois.close();
     }
 }

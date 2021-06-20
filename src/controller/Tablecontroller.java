@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 public class Tablecontroller implements Initializable {
     public void getplayers(OthelloController othelloController,Player p1,Player p2){
         File f=new File("myFile.txt");
+
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(f);
@@ -30,17 +31,16 @@ public class Tablecontroller implements Initializable {
             e.printStackTrace();
         }
         try {
+            if(ois!=null){
             othelloController.playerList = (ArrayList<Player>) ois.readObject();
+                ois.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try {
-            ois.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         sortList(othelloController.playerList);
         for (int i = 0; i <othelloController.playerList.size() ; i++) {
             table.getItems().add(othelloController.playerList.get(i));

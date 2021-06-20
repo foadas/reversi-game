@@ -72,3 +72,12 @@
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
     -fx-background-color: transparent;
 }
+#tableParent{
+    -fx-background-image: url('image/clean-white-cubtle-arrow-style-background_1017-15459.jpg');
+}
+#table{
+    -fx-background-image: url('image/clean-white-cubtle-arrow-style-background_1017-15459.jpg');
+}
+#loginfield{
+    -fx-background-image: url('image/unnamed.jpg');
+}

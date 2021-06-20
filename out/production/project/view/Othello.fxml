@@ -114,6 +114,11 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button fx:id="newGamebtn" layoutX="225.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="105.0" style="-fx-background-color: black; -fx-background-radius: 90;" text="New Game" textFill="#eb200d">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </children>

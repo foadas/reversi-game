@@ -35,7 +35,7 @@ public class Logincontroller implements Initializable {
             e.printStackTrace();
         }*/
         playbtn.setOnAction(e->{
-            if(!(player1user.getText().isEmpty()&&player2user.getText().isEmpty())) {
+            if(!(player1user.getText().isEmpty()||player2user.getText().isEmpty())) {
                 Player player1 = new Player(player1user.getText(), 2);
                 Player player2 = new Player(player2user.getText(), 2);
                 othelloController1.makebuttonsselectable();

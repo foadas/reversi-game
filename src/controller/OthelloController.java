@@ -18,9 +18,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Player;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class OthelloController implements Initializable {
@@ -36,6 +36,7 @@ public class OthelloController implements Initializable {
     public String turn="blue";
     public Player player1;
     public Player player2;
+    public ArrayList<Player>playerList=new ArrayList<>();
     //private Tablecontroller tablecontroller=new Tablecontroller();
     @FXML
     private Text point1;
@@ -59,6 +60,8 @@ public class OthelloController implements Initializable {
     private Text player1Lbl;
     @FXML
     private Button scoreBoardbtn;
+    @FXML
+    private Button newGamebtn;
     Stage theStage;
     Image playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
     Image playImage2 = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
@@ -86,6 +89,7 @@ public class OthelloController implements Initializable {
                         pointP2=0;
                         check=0;
                         checkup(a, b, turn);
+                        System.out.println(player2Lbl.getText());
                         checkDown(a, b, turn);
                         checkLeft(a, b, turn);
                         checkRight(a, b, turn);
@@ -123,16 +127,37 @@ public class OthelloController implements Initializable {
                             blackTurn.setVisible(false);
                             blueTurn.setVisible(false);
                             if (pointP1>pointP2) {
-                                winnerTxt.setText( player1Lbl+" is the winner!");
+                                winnerTxt.setText(player1Lbl.getText()+" is the winner!");
                                 //tablecontroller.getplayers(player1,player2);
+                                try {
+                                    addToFile(player1,player2);
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                } catch (ClassNotFoundException classNotFoundException) {
+                                    classNotFoundException.printStackTrace();
+                                }
                             }
                             else if(pointP2>pointP1){
-                                winnerTxt.setText(player2Lbl+" is the winner!");
+                                winnerTxt.setText(player2Lbl.getText()+" is the winner!");
                                 //tablecontroller.getplayers(player1,player2);
+                                try {
+                                    addToFile(player1,player2);
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                } catch (ClassNotFoundException classNotFoundException) {
+                                    classNotFoundException.printStackTrace();
+                                }
                             }
                             else{
                                 winnerTxt.setText("Draw!");
                                 //tablecontroller.getplayers(player1,player2);
+                                try {
+                                    addToFile(player1,player2);
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                } catch (ClassNotFoundException classNotFoundException) {
+                                    classNotFoundException.printStackTrace();
+                                }
                             }
                         }
                         range=0;
@@ -150,7 +175,20 @@ public class OthelloController implements Initializable {
             Stage stage=new Stage();
             stage.setScene(new Scene(loader.getRoot()));
             Tablecontroller tablecontroller1=loader.getController();
-            tablecontroller1.getplayers(player1,player2);
+            tablecontroller1.getplayers(this,player1,player2);
+            stage.show();
+        });
+        newGamebtn.setOnAction(e->{
+            FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Login.fxml"));
+            try {
+                loader.load();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            Stage stage=new Stage();
+            Logincontroller logincontroller=loader.getController();
+            stage.setScene(new Scene(loader.getRoot()));
+            logincontroller.setStage(stage);
             stage.show();
         });
     }
@@ -819,6 +857,19 @@ public class OthelloController implements Initializable {
         player2Lbl.setText(p2.getUser()+":");
         player1=p1;
         player2=p2;
+        playerList.add(p1);
+        playerList.add(p2);
         //tablecontroller.getplayers(p1,p2);
+    }
+    public void addToFile(Player player1,Player player2) throws IOException, ClassNotFoundException {
+        File f = new File("MyFile.txt");
+        FileOutputStream fos = null;
+        fos = new FileOutputStream(f);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(playerList);
+        oos.close();
+        FileInputStream fis = new FileInputStream(f);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        ois.close();
     }
 }

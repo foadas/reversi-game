@@ -1,3 +1,4 @@
+import controller.Logincontroller;
 import controller.OthelloController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +15,21 @@ public class Main extends Application {
         FXMLLoader loader=new FXMLLoader(this.getClass().getResource("view/Othello.fxml"));
         loader.load();
         OthelloController othellocontroller= loader.getController();
+        othellocontroller.makebuttonsunselectable();
         othellocontroller.s(primaryStage);
         //scene.getStylesheets().add(getClass().getResource("BackGround.css").toExternalForm());
         primaryStage.setScene(new Scene(loader.getRoot()));
         primaryStage.setMinWidth(1000);
         primaryStage.setMinHeight(850);
         primaryStage.show();
+        FXMLLoader fxmlLoader=new FXMLLoader(this.getClass().getResource("view/Login.fxml"));
+        fxmlLoader.load();
+        Stage stage=new Stage();
+        Logincontroller logincontroller=fxmlLoader.getController();
+        logincontroller.Logincontroller(othellocontroller);
+        logincontroller.setStage(stage);
+        stage.setScene(new Scene(fxmlLoader.getRoot()));
+        stage.show();
+        stage.setAlwaysOnTop(true);
     }
 }

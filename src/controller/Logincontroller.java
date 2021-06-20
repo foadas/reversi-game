@@ -30,10 +30,10 @@ public class Logincontroller implements Initializable {
     @FXML
     private Label startError;
     @Override
-    public void initialize(URL location, ResourceBundle resources){
-        playbtn.setOnAction(e-> {
-            if (!(player1user.getText().isEmpty() || player2user.getText().isEmpty())) {
-                if (!(player1user.getText().equals(player2user.getText()) || (player1user.getText() != "" || player2user.getText() != ""))) {
+    public void initialize(URL location, ResourceBundle resources) {
+        playbtn.setOnAction(e->{
+            if(!(player1user.getText().isEmpty()||player2user.getText().isEmpty())) {
+                if(!(player1user.getText().equals(player2user.getText()))) {
                     startError.setText("");
                     startError.setVisible(false);
                     Player player1 = new Player(player1user.getText(), 2);
@@ -43,12 +43,16 @@ public class Logincontroller implements Initializable {
                     othelloController1.resetGame();
                     stage.close();
                 }
-            else {
+                else {startError.setText("player names cant be same");
+                    startError.setVisible(true);}
+            }
+            else{
+                {if(player1user.getText().isEmpty()||player2user.getText().isEmpty()){
                     startError.setText("set name for both players");
                     startError.setVisible(true);
-                }
-        }
-    });
+                }}
+            }
+        });
     }
     public void setStage(Stage stage){
         this.stage=stage;

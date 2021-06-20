@@ -33,12 +33,6 @@ public class Logincontroller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Player player1=new Player(player1user.getText(),2);
         Player player2=new Player(player2user.getText(),2);
-        /*FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Othello.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
         playbtn.setOnAction(e->{
             othelloController1.makebuttonsselectable();
             stage.close();

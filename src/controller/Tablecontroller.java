@@ -40,11 +40,13 @@ public class Tablecontroller implements Initializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         try{
             ois.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         sortList(othelloController.playerList);
         for (int i = 0; i <othelloController.playerList.size() ; i++) {
             table.getItems().add(othelloController.playerList.get(i));

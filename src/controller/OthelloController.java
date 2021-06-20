@@ -767,4 +767,20 @@ public class OthelloController implements Initializable {
         point1.setText(pointP1.toString());
         point2.setText(pointP2.toString());
     }
+    public void makebuttonsunselectable(){
+        bt.setDisable(true);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j <8 ; j++) {
+                buttons[i][j].setDisable(true);
+            }
+        }
+    }
+    public void makebuttonsselectable(){
+        bt.setDisable(false);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j <8 ; j++) {
+                buttons[i][j].setDisable(false);
+            }
+        }
+    }
 }

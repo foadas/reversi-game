@@ -28,6 +28,8 @@ public class OthelloController implements Initializable {
     public boolean [][]shouldOf=new boolean[8][8];
     public boolean endingprogram=false;
     public int check=0;
+    public boolean statep1=true;
+    public boolean statep2=true;
     public String [][]color=new String[8][8];
     public Button [][]buttons=new Button[8][8];
     public ImageView colorImage;
@@ -168,11 +170,15 @@ public class OthelloController implements Initializable {
                                     endingprogram = true;
                                     if (turn.equals("blue")) {
                                         turn = "black";
+                                        blackTurn.setVisible(true);
+                                        blueTurn.setVisible(false);
                                         checkingRange();
 
                                     }
                                     else if (turn.equals("black")) {
                                         turn = "blue";
+                                        blackTurn.setVisible(false);
+                                        blueTurn.setVisible(true);
                                         checkingRange();
                                     }
                                 }
@@ -952,8 +958,22 @@ public class OthelloController implements Initializable {
     }
     public void addToFile() throws IOException, ClassNotFoundException {
         File f = new File("MyFile.txt");
-        playerList.add(player1);
-        playerList.add(player2);
+        for (int i = 0; i <playerList.size() ; i++) {
+            if (playerList.get(i).getUser().equals(player1.getUser())) {
+                statep1 = false;
+                int pts1=playerList.get(i).getPoint();
+                playerList.get(i).setPoint(pts1+pointP1);
+            }
+            if (playerList.get(i).getUser().equals(player2.getUser())) {
+                statep2 = false;
+                int pts2=playerList.get(i).getPoint();
+                playerList.get(i).setPoint(pts2+pointP1);
+            }
+        }
+        if(statep1)
+            playerList.add(player1);
+        if(statep2)
+            playerList.add(player2);
         FileOutputStream fos = null;
         fos = new FileOutputStream(f);
         ObjectOutputStream oos = new ObjectOutputStream(fos);

@@ -45,6 +45,7 @@ public class Tablecontroller implements Initializable {
         for (int i = 0; i <othelloController.playerList.size() ; i++) {
             table.getItems().add(othelloController.playerList.get(i));
         }
+
     }
     @FXML
     private TableView<Player> table;

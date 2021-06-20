@@ -9,6 +9,13 @@ public class Player {
     private String user;
     private int point;
 
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
 
     public String getUser() {
         return user;

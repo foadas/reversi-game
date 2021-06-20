@@ -36,6 +36,7 @@ public class OthelloController implements Initializable {
     public String turn="blue";
     public Player player1;
     public Player player2;
+    //private Tablecontroller tablecontroller=new Tablecontroller();
     @FXML
     private Text point1;
     @FXML
@@ -110,23 +111,28 @@ public class OthelloController implements Initializable {
                                 blueTurn.setVisible(true);
                             }
                         }
+
                         checkingRange();
                         check=0;
                         calculatePoints();
+                        player1.setPoint(pointP1);
+                        player2.setPoint(pointP2);
                         point1.setText(pointP1.toString());
                         point2.setText(pointP2.toString());
                         if (range==0||pointP1+pointP2==64){
                             blackTurn.setVisible(false);
                             blueTurn.setVisible(false);
                             if (pointP1>pointP2) {
-                                winnerTxt.setText("Player 1 is the winner!");
+                                winnerTxt.setText( player1Lbl+" is the winner!");
+                                //tablecontroller.getplayers(player1,player2);
                             }
                             else if(pointP2>pointP1){
-                                winnerTxt.setText("Player 2 is the winner!");
+                                winnerTxt.setText(player2Lbl+" is the winner!");
+                                //tablecontroller.getplayers(player1,player2);
                             }
                             else{
                                 winnerTxt.setText("Draw!");
-
+                                //tablecontroller.getplayers(player1,player2);
                             }
                         }
                         range=0;
@@ -143,6 +149,8 @@ public class OthelloController implements Initializable {
             }
             Stage stage=new Stage();
             stage.setScene(new Scene(loader.getRoot()));
+            Tablecontroller tablecontroller1=loader.getController();
+            tablecontroller1.getplayers(player1,player2);
             stage.show();
         });
     }
@@ -809,5 +817,8 @@ public class OthelloController implements Initializable {
     public void setNames(Player p1, Player p2){
         player1Lbl.setText(p1.getUser()+":");
         player2Lbl.setText(p2.getUser()+":");
+        player1=p1;
+        player2=p2;
+        //tablecontroller.getplayers(p1,p2);
     }
 }

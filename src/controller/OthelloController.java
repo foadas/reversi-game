@@ -4,8 +4,10 @@ package controller;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -14,7 +16,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Player;
+
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,10 +33,11 @@ public class OthelloController implements Initializable {
     public Integer pointP1=0;
     public Integer pointP2=0;
     public int range=0;
-    public  String turn="blue";
+    public String turn="blue";
+    public Player player1;
+    public Player player2;
     @FXML
     private Text point1;
-
     @FXML
     private Text point2;
     @FXML
@@ -46,6 +52,12 @@ public class OthelloController implements Initializable {
     private Label blackTurn;
     @FXML
     private Button bt;
+    @FXML
+    private Text player2Lbl;
+    @FXML
+    private Text player1Lbl;
+    @FXML
+    private Button scoreBoardbtn;
     Stage theStage;
     Image playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
     Image playImage2 = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
@@ -122,6 +134,17 @@ public class OthelloController implements Initializable {
                 });
             }
         }
+        scoreBoardbtn.setOnAction(e->{
+            FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Table.fxml"));
+            try {
+                loader.load();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            Stage stage=new Stage();
+            stage.setScene(new Scene(loader.getRoot()));
+            stage.show();
+        });
     }
     public void turnOff(){
         for (int i = 0; i <8 ; i++) {
@@ -782,5 +805,9 @@ public class OthelloController implements Initializable {
                 buttons[i][j].setDisable(false);
             }
         }
+    }
+    public void setNames(Player p1, Player p2){
+        player1Lbl.setText(p1.getUser()+":");
+        player2Lbl.setText(p2.getUser()+":");
     }
 }

@@ -7,21 +7,21 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="loginfield" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Logincontroller">
-   <children>
-      <VBox layoutX="174.0" layoutY="121.0" prefHeight="25.0" prefWidth="239.0">
-         <children>
-            <TextField fx:id="player1user" />
-         </children>
-      </VBox>
-      <VBox layoutX="174.0" layoutY="174.0" prefHeight="25.0" prefWidth="239.0">
-         <children>
-            <TextField fx:id="player2user" />
-         </children>
-      </VBox>
-      <Button fx:id="playbtn" layoutX="216.0" layoutY="239.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-radius: 45;" text="Play">
-         <font>
-            <Font name="System Bold Italic" size="16.0" />
-         </font>
-      </Button>
-   </children>
+    <children>
+        <VBox layoutX="174.0" layoutY="121.0" prefHeight="25.0" prefWidth="239.0">
+            <children>
+                <TextField fx:id="player1user" />
+            </children>
+        </VBox>
+        <VBox layoutX="174.0" layoutY="174.0" prefHeight="25.0" prefWidth="239.0">
+            <children>
+                <TextField fx:id="player2user" />
+            </children>
+        </VBox>
+        <Button fx:id="playbtn" layoutX="216.0" layoutY="239.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-radius: 45;" text="Play">
+            <font>
+                <Font name="System Bold Italic" size="16.0" />
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

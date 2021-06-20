@@ -1,15 +1,12 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Player;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,8 +28,6 @@ public class Logincontroller implements Initializable {
     private Button playbtn;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Player player1=new Player(player1user.getText(),2);
-        Player player2=new Player(player2user.getText(),2);
         /*FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Othello.fxml"));
         try {
             loader.load();
@@ -40,8 +35,13 @@ public class Logincontroller implements Initializable {
             e.printStackTrace();
         }*/
         playbtn.setOnAction(e->{
-            othelloController1.makebuttonsselectable();
-            stage.close();
+            if(!(player1user.getText().isEmpty()&&player2user.getText().isEmpty())) {
+                Player player1 = new Player(player1user.getText(), 2);
+                Player player2 = new Player(player2user.getText(), 2);
+                othelloController1.makebuttonsselectable();
+                othelloController1.setNames(player1, player2);
+                stage.close();
+            }
         });
     }
     public void setStage(Stage stage){

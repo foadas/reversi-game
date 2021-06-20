@@ -6,8 +6,8 @@ public class Player {
         this.point = point;
     }
 
-    String user;
-    int point;
+    private String user;
+    private int point;
 
 
     public String getUser() {

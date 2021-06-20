@@ -30,12 +30,14 @@ public class Logincontroller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         playbtn.setOnAction(e->{
             if(!(player1user.getText().isEmpty()||player2user.getText().isEmpty())) {
-                Player player1 = new Player(player1user.getText(), 2);
-                Player player2 = new Player(player2user.getText(), 2);
-                othelloController1.makebuttonsselectable();
-                othelloController1.setNames(player1, player2);
-                othelloController1.resetGame();
-                stage.close();
+                if(!(player1user.getText().equals(player2user.getText()))) {
+                    Player player1 = new Player(player1user.getText(), 2);
+                    Player player2 = new Player(player2user.getText(), 2);
+                    othelloController1.makebuttonsselectable();
+                    othelloController1.setNames(player1, player2);
+                    othelloController1.resetGame();
+                    stage.close();
+                }
             }
         });
     }

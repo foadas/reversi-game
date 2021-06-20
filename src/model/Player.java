@@ -7,7 +7,7 @@ public class Player implements Serializable {
         this.user = user;
         this.point = point;
     }
-
+    public Player(){}
     private String user;
     private int point;
 

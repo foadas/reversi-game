@@ -164,7 +164,7 @@ public class OthelloController implements Initializable {
                                 }
                             }
                             else {
-                                if (endingprogram == false) {
+                                if (!endingprogram) {
                                     endingprogram = true;
                                     if (turn.equals("blue")) {
                                         turn = "black";
@@ -176,7 +176,7 @@ public class OthelloController implements Initializable {
                                         checkingRange();
                                     }
                                 }
-                                else if(endingprogram==true){
+                                else if(endingprogram){
                                     if (pointP1 > pointP2) {
                                         winnerTxt.setText(player1Lbl.getText() + " is the winner!");
                                         //tablecontroller.getplayers(player1,player2);

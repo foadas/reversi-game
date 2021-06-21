@@ -15,7 +15,7 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class Tablecontroller implements Initializable {
-    public void getplayers(OthelloController othelloController,Player p1,Player p2){
+    public void getplayers(OthelloController othelloController,Player p1,Player p2) throws IOException {
         File f=new File("myFile.txt");
 
         FileInputStream fis = null;
@@ -28,22 +28,19 @@ public class Tablecontroller implements Initializable {
         try {
             ois = new ObjectInputStream(fis);
         } catch (IOException e) {
-            e.printStackTrace();
+            FileOutputStream b=new FileOutputStream(f);
+            ObjectOutputStream outputStream=new ObjectOutputStream(b);
+            outputStream.write(0);
         }
         try {
             if(ois!=null){
             othelloController.playerList = (ArrayList<Player>) ois.readObject();
                 ois.close();
-            }
+            ;}
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try{
-            ois.close();
-        } catch (IOException e) {
             e.printStackTrace();
         }
 

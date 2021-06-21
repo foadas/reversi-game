@@ -71,6 +71,7 @@ public class OthelloController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         blackTurn.setVisible(false);
         bt.setOnAction(event -> resetGame());
         scoreBox.heightProperty().addListener(observable -> {
@@ -270,7 +271,11 @@ public class OthelloController implements Initializable {
             Stage stage=new Stage();
             stage.setScene(new Scene(loader.getRoot()));
             Tablecontroller tablecontroller1=loader.getController();
-            tablecontroller1.getplayers(this,player1,player2);
+            try {
+                tablecontroller1.getplayers(this,player1,player2);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             stage.show();
             stage.setResizable(false);
         });
@@ -980,6 +985,7 @@ public class OthelloController implements Initializable {
         fos = new FileOutputStream(f);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(playerList);
+
         oos.close();
         //FileInputStream fis = new FileInputStream(f);
         //ObjectInputStream ois = new ObjectInputStream(fis);

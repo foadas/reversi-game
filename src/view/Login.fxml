@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="loginfield" alignment="CENTER" prefHeight="255.0" prefWidth="392.0" spacing="15.0" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Logincontroller">
+<VBox fx:id="loginfield" alignment="CENTER" prefHeight="255.0" prefWidth="392.0" spacing="15.0" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
       <children>
       <Label alignment="CENTER" prefHeight="17.0" prefWidth="142.0" text="start">
          <font>
@@ -39,7 +39,7 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Label>
-        <Button fx:id="playbtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-radius: 45;" text="Play">
+        <Button fx:id="playBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-radius: 45;" text="Play">
             <font>
                 <Font name="System Bold Italic" size="16.0" />
             </font>

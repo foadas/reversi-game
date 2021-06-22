@@ -1,24 +1,20 @@
 package controller;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Player;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Logincontroller implements Initializable {
+public class LoginController implements Initializable {
     private Stage stage;
     private static OthelloController othelloController1;
-    public static void Logincontroller(OthelloController othelloController){
+    public static void giveController(OthelloController othelloController){
         othelloController1=othelloController;
     }
-    @FXML
-    private VBox loginfield;
 
     @FXML
     private TextField player1user;
@@ -26,12 +22,12 @@ public class Logincontroller implements Initializable {
     @FXML
     private TextField player2user;
     @FXML
-    private Button playbtn;
+    private Button playBtn;
     @FXML
     private Label startError;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        playbtn.setOnAction(e->{
+        playBtn.setOnAction(e->{
             if(!(player1user.getText().isEmpty()||player2user.getText().isEmpty())) {
                 if(!(player1user.getText().equals(player2user.getText()))) {
                     startError.setText("");

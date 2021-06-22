@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 public class Tablecontroller implements Initializable {
     public void getplayers(OthelloController othelloController,Player p1,Player p2) throws IOException {
         File f=new File("myFile.txt");
-
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(f);
@@ -39,7 +38,7 @@ public class Tablecontroller implements Initializable {
             ;}
 
         } catch (IOException e) {
-            e.printStackTrace();
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

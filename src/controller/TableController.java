@@ -63,12 +63,10 @@ public class TableController implements Initializable {
         pointColumn.setCellValueFactory(new PropertyValueFactory<>("point"));
     }
     private void sortList(ArrayList<Player>playerArrayList) {
-        Collections.sort(playerArrayList, new Comparator<Player>() {
-            public int compare(Player player1, Player player2) {
-                Long p2 = new Long(player2.getPoint());
-                Long p1 = new Long(player1.getPoint());
-                return p2.compareTo(p1);
-            }
+        Collections.sort(playerArrayList, (player1, player2) -> {
+            Long p2 = (long) player2.getPoint();
+            Long p1 = (long) player1.getPoint();
+            return p2.compareTo(p1);
         });
     }
 }

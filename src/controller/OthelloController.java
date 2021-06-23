@@ -919,7 +919,7 @@ public class OthelloController implements Initializable {
 
     }
     public void addToFile() throws IOException, ClassNotFoundException {
-        File f = new File("Users.bin");
+        File f = new File("MyFile.txt");
         for (Player player : playerList) {
             if (player.getUser().equals(player1.getUser())) {
                 stateP1 = false;

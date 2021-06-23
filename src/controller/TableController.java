@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class TableController implements Initializable {
     public void getPlayers(OthelloController othelloController) throws IOException {
-        File f=new File("Users.bin");
+        File f=new File("myFile.txt");
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(f);

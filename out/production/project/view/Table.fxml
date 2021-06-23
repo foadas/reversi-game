@@ -7,8 +7,8 @@
     <children>
         <TableView fx:id="table" layoutX="217.0" layoutY="51.0" prefHeight="283.0" prefWidth="151.0">
             <columns>
-                <TableColumn fx:id="usercolumn" prefWidth="75.0" text="User" />
-                <TableColumn fx:id="pointcolumn" prefWidth="75.0" text="Point" />
+                <TableColumn fx:id="userColumn" prefWidth="75.0" text="User" />
+                <TableColumn fx:id="pointColumn" prefWidth="75.0" text="Point" />
             </columns>
         </TableView>
     </children>

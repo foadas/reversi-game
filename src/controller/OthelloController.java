@@ -17,7 +17,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Player;
-
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;

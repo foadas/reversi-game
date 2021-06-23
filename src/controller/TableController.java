@@ -53,15 +53,15 @@ public class TableController implements Initializable {
     private TableView<Player> table;
 
     @FXML
-    private TableColumn<Player,String> usercolumn;
+    private TableColumn<Player,String> userColumn;
 
     @FXML
-    private TableColumn<Player,String> pointcolumn;
+    private TableColumn<Player,String> pointColumn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usercolumn.setCellValueFactory(new PropertyValueFactory<>("user"));
-        pointcolumn.setCellValueFactory(new PropertyValueFactory<>("point"));
+        userColumn.setCellValueFactory(new PropertyValueFactory<>("user"));
+        pointColumn.setCellValueFactory(new PropertyValueFactory<>("point"));
     }
     private void sortList(ArrayList<Player>playerArrayList) {
         Collections.sort(playerArrayList, new Comparator<Player>() {

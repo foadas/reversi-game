@@ -1,4 +1,3 @@
-
 import controller.LoginController;
 import controller.OthelloController;
 import javafx.application.Application;
@@ -16,7 +15,7 @@ public class Main extends Application {
         FXMLLoader loader=new FXMLLoader(this.getClass().getResource("view/Othello.fxml"));
         loader.load();
         OthelloController othellocontroller= loader.getController();
-        LoginController.setLoginController(othellocontroller);
+        LoginController.giveController(othellocontroller);
         othellocontroller.makeButtonsUnSelectable();
         othellocontroller.s(primaryStage);
         //scene.getStylesheets().add(getClass().getResource("BackGround.css").toExternalForm());

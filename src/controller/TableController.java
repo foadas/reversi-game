@@ -15,9 +15,8 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class TableController implements Initializable {
-    public void getPlayers(OthelloController othelloController, Player p1, Player p2) throws IOException {
+    public void getPlayers(OthelloController othelloController,Player p1,Player p2) throws IOException {
         File f=new File("myFile.txt");
-
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(f);
@@ -34,11 +33,13 @@ public class TableController implements Initializable {
         }
         try {
             if(ois!=null){
-            othelloController.playerList = (ArrayList<Player>) ois.readObject();
+                othelloController.playerList = (ArrayList<Player>) ois.readObject();
                 ois.close();
-            ;}
+                ;}
 
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -52,21 +53,21 @@ public class TableController implements Initializable {
     private TableView<Player> table;
 
     @FXML
-    private TableColumn<Player,String> userColumn;
+    private TableColumn<Player,String> usercolumn;
 
     @FXML
-    private TableColumn<Player,String> pointColumn;
+    private TableColumn<Player,String> pointcolumn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        userColumn.setCellValueFactory(new PropertyValueFactory<>("user"));
-        pointColumn.setCellValueFactory(new PropertyValueFactory<>("point"));
+        usercolumn.setCellValueFactory(new PropertyValueFactory<>("user"));
+        pointcolumn.setCellValueFactory(new PropertyValueFactory<>("point"));
     }
     private void sortList(ArrayList<Player>playerArrayList) {
         Collections.sort(playerArrayList, new Comparator<Player>() {
             public int compare(Player player1, Player player2) {
-                Long p2 = (long) player2.getPoint();
-                Long p1 = (long) player1.getPoint();
+                Long p2 = new Long(player2.getPoint());
+                Long p1 = new Long(player1.getPoint());
                 return p2.compareTo(p1);
             }
         });

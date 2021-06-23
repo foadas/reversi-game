@@ -1,5 +1,4 @@
 package controller;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,7 +12,7 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
     private Stage stage;
     private static OthelloController othelloController1;
-    public static void setLoginController(OthelloController othelloController){
+    public static void giveController(OthelloController othelloController){
         othelloController1=othelloController;
     }
 
@@ -44,10 +43,10 @@ public class LoginController implements Initializable {
                     startError.setVisible(true);}
             }
             else{
-             {if(player1user.getText().isEmpty()||player2user.getText().isEmpty()){
-                startError.setText("set name for both players");
-                startError.setVisible(true);
-            }}
+                {if(player1user.getText().isEmpty()||player2user.getText().isEmpty()){
+                    startError.setText("set name for both players");
+                    startError.setVisible(true);
+                }}
             }
         });
     }

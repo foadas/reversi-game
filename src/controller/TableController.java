@@ -14,8 +14,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
-public class Tablecontroller implements Initializable {
-    public void getplayers(OthelloController othelloController,Player p1,Player p2) throws IOException {
+public class TableController implements Initializable {
+    public void getPlayers(OthelloController othelloController, Player p1, Player p2) throws IOException {
         File f=new File("myFile.txt");
 
         FileInputStream fis = null;
@@ -38,9 +38,7 @@ public class Tablecontroller implements Initializable {
                 ois.close();
             ;}
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -54,21 +52,21 @@ public class Tablecontroller implements Initializable {
     private TableView<Player> table;
 
     @FXML
-    private TableColumn<Player,String> usercolumn;
+    private TableColumn<Player,String> userColumn;
 
     @FXML
-    private TableColumn<Player,String> pointcolumn;
+    private TableColumn<Player,String> pointColumn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usercolumn.setCellValueFactory(new PropertyValueFactory<>("user"));
-        pointcolumn.setCellValueFactory(new PropertyValueFactory<>("point"));
+        userColumn.setCellValueFactory(new PropertyValueFactory<>("user"));
+        pointColumn.setCellValueFactory(new PropertyValueFactory<>("point"));
     }
     private void sortList(ArrayList<Player>playerArrayList) {
         Collections.sort(playerArrayList, new Comparator<Player>() {
             public int compare(Player player1, Player player2) {
-                Long p2 = new Long(player2.getPoint());
-                Long p1 = new Long(player1.getPoint());
+                Long p2 = (long) player2.getPoint();
+                Long p1 = (long) player1.getPoint();
                 return p2.compareTo(p1);
             }
         });

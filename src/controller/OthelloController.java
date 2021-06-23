@@ -26,10 +26,10 @@ import java.util.ResourceBundle;
 public class OthelloController implements Initializable {
     public boolean [][] isOk =new boolean[8][8];
     public boolean [][]shouldOf=new boolean[8][8];
-    public boolean endingprogram=false;
+    public boolean endingProgram =false;
     public int check=0;
-    public boolean statep1=true;
-    public boolean statep2=true;
+    public boolean stateP1 =true;
+    public boolean stateP2 =true;
     public String [][]color=new String[8][8];
     public Button [][]buttons=new Button[8][8];
     public ImageView colorImage;
@@ -40,7 +40,7 @@ public class OthelloController implements Initializable {
     public Player player1;
     public Player player2;
     public ArrayList<Player>playerList=new ArrayList<>();
-    //private Tablecontroller tablecontroller=new Tablecontroller();
+
     @FXML
     private Text point1;
     @FXML
@@ -62,9 +62,9 @@ public class OthelloController implements Initializable {
     @FXML
     private Text player1Lbl;
     @FXML
-    private Button scoreBoardbtn;
+    private Button scoreBoardBtn;
     @FXML
-    private Button newGamebtn;
+    private Button newGameBtn;
     Stage theStage;
     Image playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
     Image playImage2 = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
@@ -107,15 +107,15 @@ public class OthelloController implements Initializable {
                                 turn = "black";
                                 blackTurn.setVisible(true);
                                 blueTurn.setVisible(false);
-                                if(endingprogram==true){
-                                    endingprogram=false;
+                                if(endingProgram){
+                                    endingProgram =false;
                                 }
                             }
                         }
                         else if (turn.equals("black")){
                             if (check > 0) {
-                                if(endingprogram==true){
-                                    endingprogram=false;
+                                if(endingProgram){
+                                    endingProgram =false;
                                 }
                                 shouldOf[a][b]=true;
                                 turnOff();
@@ -136,39 +136,33 @@ public class OthelloController implements Initializable {
                             if (pointP1 + pointP2 == 64) {
                                 if (pointP1 > pointP2) {
                                     winnerTxt.setText(player1Lbl.getText() + " is the winner!");
-                                    //tablecontroller.getplayers(player1,player2);
+
                                     try {
                                         addToFile();
-                                    } catch (IOException ioException) {
+                                    } catch (IOException | ClassNotFoundException ioException) {
                                         ioException.printStackTrace();
-                                    } catch (ClassNotFoundException classNotFoundException) {
-                                        classNotFoundException.printStackTrace();
                                     }
                                 } else if (pointP2 > pointP1) {
                                     winnerTxt.setText(player2Lbl.getText() + " is the winner!");
-                                    //tablecontroller.getplayers(player1,player2);
+
                                     try {
                                         addToFile();
-                                    } catch (IOException ioException) {
+                                    } catch (IOException | ClassNotFoundException ioException) {
                                         ioException.printStackTrace();
-                                    } catch (ClassNotFoundException classNotFoundException) {
-                                        classNotFoundException.printStackTrace();
                                     }
                                 } else {
                                     winnerTxt.setText("Draw!");
-                                    //tablecontroller.getplayers(player1,player2);
+
                                     try {
                                         addToFile();
-                                    } catch (IOException ioException) {
+                                    } catch (IOException | ClassNotFoundException ioException) {
                                         ioException.printStackTrace();
-                                    } catch (ClassNotFoundException classNotFoundException) {
-                                        classNotFoundException.printStackTrace();
                                     }
                                 }
                             }
                             else {
-                                if (!endingprogram) {
-                                    endingprogram = true;
+                                if (!endingProgram) {
+                                    endingProgram = true;
                                     if (turn.equals("blue")) {
                                         turn = "black";
                                         blackTurn.setVisible(true);
@@ -183,39 +177,33 @@ public class OthelloController implements Initializable {
                                         checkingRange();
                                     }
                                 }
-                                else if(endingprogram){
+                                else
                                     if (pointP1 > pointP2) {
                                         winnerTxt.setText(player1Lbl.getText() + " is the winner!");
-                                        //tablecontroller.getplayers(player1,player2);
+
                                         try {
                                             addToFile();
-                                        } catch (IOException ioException) {
+                                        } catch (IOException | ClassNotFoundException ioException) {
                                             ioException.printStackTrace();
-                                        } catch (ClassNotFoundException classNotFoundException) {
-                                            classNotFoundException.printStackTrace();
                                         }
                                     } else if (pointP2 > pointP1) {
                                         winnerTxt.setText(player2Lbl.getText() + " is the winner!");
-                                        //tablecontroller.getplayers(player1,player2);
+
                                         try {
                                             addToFile();
-                                        } catch (IOException ioException) {
+                                        } catch (IOException | ClassNotFoundException ioException) {
                                             ioException.printStackTrace();
-                                        } catch (ClassNotFoundException classNotFoundException) {
-                                            classNotFoundException.printStackTrace();
                                         }
                                     } else {
                                         winnerTxt.setText("Draw!");
-                                        //tablecontroller.getplayers(player1,player2);
+
                                         try {
                                             addToFile();
-                                        } catch (IOException ioException) {
+                                        } catch (IOException | ClassNotFoundException ioException) {
                                             ioException.printStackTrace();
-                                        } catch (ClassNotFoundException classNotFoundException) {
-                                            classNotFoundException.printStackTrace();
                                         }
                                     }
-                                }
+
                             }
                         }
                         /*if (range==0||pointP1+pointP2==64){
@@ -223,7 +211,7 @@ public class OthelloController implements Initializable {
                             blueTurn.setVisible(false);
                             if (pointP1>pointP2) {
                                 winnerTxt.setText(player1Lbl.getText()+" is the winner!");
-                                //tablecontroller.getplayers(player1,player2);
+
                                 try {
                                     addToFile(player1,player2);
                                 } catch (IOException ioException) {
@@ -234,7 +222,7 @@ public class OthelloController implements Initializable {
                             }
                             else if(pointP2>pointP1){
                                 winnerTxt.setText(player2Lbl.getText()+" is the winner!");
-                                //tablecontroller.getplayers(player1,player2);
+
                                 try {
                                     addToFile(player1,player2);
                                 } catch (IOException ioException) {
@@ -245,7 +233,7 @@ public class OthelloController implements Initializable {
                             }
                             else{
                                 winnerTxt.setText("Draw!");
-                                //tablecontroller.getplayers(player1,player2);
+
                                 try {
                                     addToFile(player1,player2);
                                 } catch (IOException ioException) {
@@ -260,7 +248,7 @@ public class OthelloController implements Initializable {
                 });
             }
         }
-        scoreBoardbtn.setOnAction(e->{
+        scoreBoardBtn.setOnAction(e->{
 
             FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Table.fxml"));
             try {
@@ -270,16 +258,16 @@ public class OthelloController implements Initializable {
             }
             Stage stage=new Stage();
             stage.setScene(new Scene(loader.getRoot()));
-            Tablecontroller tablecontroller1=loader.getController();
+            TableController tableController1 =loader.getController();
             try {
-                tablecontroller1.getplayers(this,player1,player2);
+                tableController1.getPlayers(this,player1,player2);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
             stage.show();
             stage.setResizable(false);
         });
-        newGamebtn.setOnAction(e->{
+        newGameBtn.setOnAction(e->{
             FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Login.fxml"));
             try {
                 loader.load();
@@ -287,7 +275,7 @@ public class OthelloController implements Initializable {
                 ioException.printStackTrace();
             }
             Stage stage=new Stage();
-            Logincontroller logincontroller=loader.getController();
+            LoginController logincontroller=loader.getController();
             stage.setScene(new Scene(loader.getRoot()));
             logincontroller.setStage(stage);
             stage.show();
@@ -937,7 +925,7 @@ public class OthelloController implements Initializable {
         point1.setText(pointP1.toString());
         point2.setText(pointP2.toString());
     }
-    public void makebuttonsunselectable(){
+    public void makeButtonsUnSelectable(){
         bt.setDisable(true);
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j <8 ; j++) {
@@ -945,7 +933,7 @@ public class OthelloController implements Initializable {
             }
         }
     }
-    public void makebuttonsselectable(){
+    public void makeButtonsSelectable(){
         bt.setDisable(false);
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j <8 ; j++) {
@@ -961,27 +949,26 @@ public class OthelloController implements Initializable {
         player2=new Player();
         player2=p2;
 
-        //tablecontroller.getplayers(p1,p2);
     }
     public void addToFile() throws IOException, ClassNotFoundException {
         File f = new File("MyFile.txt");
-        for (int i = 0; i <playerList.size() ; i++) {
-            if (playerList.get(i).getUser().equals(player1.getUser())) {
-                statep1 = false;
-                int pts1=playerList.get(i).getPoint();
-                playerList.get(i).setPoint(pts1+pointP1);
+        for (Player player : playerList) {
+            if (player.getUser().equals(player1.getUser())) {
+                stateP1 = false;
+                int pts1 = player.getPoint();
+                player.setPoint(pts1 + pointP1);
             }
-            if (playerList.get(i).getUser().equals(player2.getUser())) {
-                statep2 = false;
-                int pts2=playerList.get(i).getPoint();
-                playerList.get(i).setPoint(pts2+pointP1);
+            if (player.getUser().equals(player2.getUser())) {
+                stateP2 = false;
+                int pts2 = player.getPoint();
+                player.setPoint(pts2 + pointP1);
             }
         }
-        if(statep1)
+        if(stateP1)
             playerList.add(player1);
-        if(statep2)
+        if(stateP2)
             playerList.add(player2);
-        FileOutputStream fos = null;
+        FileOutputStream fos;
         fos = new FileOutputStream(f);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(playerList);

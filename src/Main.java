@@ -1,9 +1,9 @@
-import controller.Logincontroller;
+
+import controller.LoginController;
 import controller.OthelloController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -16,8 +16,8 @@ public class Main extends Application {
         FXMLLoader loader=new FXMLLoader(this.getClass().getResource("view/Othello.fxml"));
         loader.load();
         OthelloController othellocontroller= loader.getController();
-        Logincontroller.Logincontroller(othellocontroller);
-        othellocontroller.makebuttonsunselectable();
+        LoginController.setLoginController(othellocontroller);
+        othellocontroller.makeButtonsUnSelectable();
         othellocontroller.s(primaryStage);
         //scene.getStylesheets().add(getClass().getResource("BackGround.css").toExternalForm());
         primaryStage.setScene(new Scene(loader.getRoot()));
@@ -27,14 +27,12 @@ public class Main extends Application {
         FXMLLoader fxmlLoader=new FXMLLoader(this.getClass().getResource("view/Login.fxml"));
         fxmlLoader.load();
         Stage stage=new Stage();
-        Logincontroller logincontroller=fxmlLoader.getController();
+        LoginController logincontroller=fxmlLoader.getController();
         logincontroller.setStage(stage);
         stage.setScene(new Scene(fxmlLoader.getRoot()));
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
-        //Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        //alert.setContentText("This window cannot be closed");
         stage.setOnCloseRequest(event -> primaryStage.close());
     }
 }

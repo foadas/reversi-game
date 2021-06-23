@@ -37,7 +37,7 @@ public class TableController implements Initializable {
                 ois.close();
                 ;}
 
-        } catch (IOException e) {
+        } catch (IOException ignored) {
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

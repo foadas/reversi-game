@@ -11,11 +11,10 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class TableController implements Initializable {
-    public void getPlayers(OthelloController othelloController,Player p1,Player p2) throws IOException {
+    public void getPlayers(OthelloController othelloController) throws IOException {
         File f=new File("myFile.txt");
         FileInputStream fis = null;
         try {

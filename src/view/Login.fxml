@@ -5,47 +5,47 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="loginField" alignment="CENTER" prefHeight="255.0" prefWidth="392.0" spacing="15.0" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-    <children>
-        <Label alignment="CENTER" prefHeight="17.0" prefWidth="142.0" text="start">
+<VBox fx:id="loginField" alignment="CENTER" prefHeight="255.0" prefWidth="392.0" spacing="15.0"
+      stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.LoginController">
+    <Label alignment="CENTER" prefHeight="17.0" prefWidth="142.0" text="start">
+        <font>
+            <Font name="System Bold Italic" size="24.0"/>
+        </font>
+        <VBox.margin>
+            <Insets left="20.0"/>
+        </VBox.margin>
+    </Label>
+    <HBox alignment="CENTER">
+        <Label text="player1 :">
             <font>
-                <Font name="System Bold Italic" size="24.0" />
-            </font>
-            <VBox.margin>
-                <Insets left="20.0" />
-            </VBox.margin></Label>
-        <HBox alignment="CENTER">
-            <children>
-                <Label text="player1 :">
-                    <font>
-                        <Font name="System Italic" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="player1user" prefHeight="25.0" prefWidth="185.0" promptText="Player1" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-width: 0px 0px 3px;" />
-            </children>
-        </HBox>
-        <HBox alignment="CENTER">
-            <children>
-                <Label text="player2 :">
-                    <font>
-                        <Font name="System Italic" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="player2user" prefHeight="25.0" prefWidth="184.0" promptText="Player2" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-width: 0px 0px 3px;" />
-            </children>
-        </HBox>
-        <Label fx:id="startError" alignment="CENTER" prefHeight="40.0" prefWidth="194.0" visible="false">
-            <font>
-                <Font name="System Bold Italic" size="12.0" />
+                <Font name="System Italic" size="14.0"/>
             </font>
         </Label>
-        <Button fx:id="playBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-radius: 45;" text="Play">
+        <TextField fx:id="player1user" prefHeight="25.0" prefWidth="185.0" promptText="Player1"
+                   style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-width: 0px 0px 3px;"/>
+    </HBox>
+    <HBox alignment="CENTER">
+        <Label text="player2 :">
             <font>
-                <Font name="System Bold Italic" size="16.0" />
+                <Font name="System Italic" size="14.0"/>
             </font>
-            <VBox.margin>
-                <Insets />
-            </VBox.margin>
-        </Button>
-    </children>
+        </Label>
+        <TextField fx:id="player2user" prefHeight="25.0" prefWidth="184.0" promptText="Player2"
+                   style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-width: 0px 0px 3px;"/>
+    </HBox>
+    <Label fx:id="startError" alignment="CENTER" prefHeight="40.0" prefWidth="194.0" visible="false">
+        <font>
+            <Font name="System Bold Italic" size="12.0"/>
+        </font>
+    </Label>
+    <Button fx:id="playBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0"
+            style="-fx-background-radius: 45;" text="Play">
+        <font>
+            <Font name="System Bold Italic" size="16.0"/>
+        </font>
+        <VBox.margin>
+            <Insets/>
+        </VBox.margin>
+    </Button>
 </VBox>

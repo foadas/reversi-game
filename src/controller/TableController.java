@@ -34,8 +34,7 @@ public class TableController implements Initializable {
         try {
             if(ois!=null){
                 othelloController.playerList = (ArrayList<Player>) ois.readObject();
-                ois.close();
-                ;}
+                ois.close();}
 
         } catch (IOException ignored) {
 

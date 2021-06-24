@@ -35,7 +35,7 @@ public class OthelloController implements Initializable {
     public Integer pointP1=0;
     public Integer pointP2=0;
     public int range=0;
-    public String turn="blue";
+    public String turn="black";
     public Player player1;
     public Player player2;
     public ArrayList<Player>playerList=new ArrayList<>();
@@ -179,7 +179,7 @@ public class OthelloController implements Initializable {
                                         checkingRange();
                                     }
                                 }
-                                else
+                                if(range==0)
                                     if (pointP1 > pointP2) {
                                         winnerTxt.setText(player1Lbl.getText() + " is the winner!");
                                         blackTurn.setVisible(false);
@@ -745,7 +745,7 @@ public class OthelloController implements Initializable {
         this.theStage=stage;
     }
     public void resetGame(){
-        turn="blue";
+        turn="black";
         for (int i = 0; i <8 ; i++) {
             for (int j = 0; j <8 ; j++) {
                 shouldOf[i][j]=false;
@@ -792,7 +792,6 @@ public class OthelloController implements Initializable {
         checkingRange();
         blackTurn.setVisible(false);
         blueTurn.setVisible(true);
-        turn="blue";
         pointP2=2;
         pointP1=2;
         point1.setText(pointP1.toString());

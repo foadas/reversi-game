@@ -208,7 +208,6 @@ public class OthelloController implements Initializable {
                                             ioException.printStackTrace();
                                         }
                                     }
-
                             }
                         }
                         range=0;

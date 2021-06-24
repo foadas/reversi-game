@@ -13,105 +13,100 @@
 
 <BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" stylesheets="@BackGround.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OthelloController">
    <right>
-      <VBox fx:id="scoreBox" alignment="CENTER" prefHeight="400.0" prefWidth="170.0" snapToPixel="false"
-            style="-fx-background-color: grey;" BorderPane.alignment="CENTER_RIGHT">
+      <VBox fx:id="scoreBox" alignment="CENTER" prefHeight="400.0" prefWidth="170.0" snapToPixel="false" style="-fx-background-color: grey;" BorderPane.alignment="CENTER_RIGHT">
          <Label alignment="CENTER" prefHeight="50.0" prefWidth="128.0" text="Othello Reversi" textFill="#db1f33">
             <font>
-               <Font name="System Bold Italic" size="18.0"/>
+               <Font name="System Bold Italic" size="18.0" />
             </font>
             <padding>
-               <Insets bottom="100.0"/>
+               <Insets bottom="100.0" />
             </padding>
          </Label>
          <Text fx:id="winnerTxt" strokeType="OUTSIDE" strokeWidth="0.0">
             <font>
-               <Font name="System Bold Italic" size="14.0"/>
+               <Font name="System Bold Italic" size="14.0" />
             </font>
          </Text>
          <Label fx:id="blueTurn" text="turn:" textFill="#a6128c">
             <font>
-               <Font name="System Bold" size="22.0"/>
+               <Font name="System Bold" size="22.0" />
             </font>
             <VBox.margin>
-               <Insets/>
+               <Insets />
             </VBox.margin>
          </Label>
          <ImageView fitHeight="40.0" fitWidth="40.0">
-            <Image url="@image/circle.png"/>
+            <Image url="@image/circle.png" />
          </ImageView>
          <HBox alignment="TOP_CENTER" prefHeight="56.0" prefWidth="201.0" style="-fx-background-color: grey;">
             <Text fx:id="player1Lbl" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1:">
                <font>
-                  <Font name="System Bold Italic" size="14.0"/>
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Text>
             <Text fx:id="point1" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font name="System Bold Italic" size="14.0"/>
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Text>
          </HBox>
          <Label fx:id="blackTurn" text="turn:" textFill="#a6128c">
             <font>
-               <Font name="System Bold" size="22.0"/>
+               <Font name="System Bold" size="22.0" />
             </font>
             <VBox.margin>
-               <Insets/>
+               <Insets />
             </VBox.margin>
          </Label>
          <ImageView fitHeight="40.0" fitWidth="40.0">
-            <Image url="@image/circular-filled-shape.png"/>
+            <Image url="@image/circular-filled-shape.png" />
          </ImageView>
          <HBox alignment="TOP_CENTER" prefHeight="73.0" prefWidth="201.0">
             <Text fx:id="player2Lbl" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2:">
                <font>
-                  <Font name="System Bold Italic" size="14.0"/>
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Text>
             <Text fx:id="point2" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font name="System Bold Italic" size="14.0"/>
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Text>
          </HBox>
       </VBox>
    </right>
    <center>
-      <VBox fx:id="field" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="26.0" snapToPixel="false"
-            stylesheets="@BackGround.css" BorderPane.alignment="TOP_CENTER">
+      <VBox fx:id="field" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="26.0" snapToPixel="false" stylesheets="@BackGround.css" BorderPane.alignment="TOP_CENTER">
          <BorderPane.margin>
-            <Insets/>
+            <Insets />
          </BorderPane.margin>
          <opaqueInsets>
-            <Insets/>
+            <Insets />
          </opaqueInsets>
          <padding>
-            <Insets bottom="40.0"/>
+            <Insets bottom="40.0" />
          </padding>
          <HBox alignment="TOP_CENTER">
             <VBox.margin>
-               <Insets/>
+               <Insets />
             </VBox.margin>
-            <Button fx:id="bt" alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="12.0"
-                    style="-fx-background-color: transparent;">
+            <Button fx:id="bt" alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="12.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="49.0" fitWidth="39.0" preserveRatio="true">
-                     <Image url="@image/refresh.png"/>
+                     <Image url="@image/refresh.png" />
                   </ImageView>
                </graphic>
             </Button>
             <Button fx:id="scoreBoardBtn" mnemonicParsing="false" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="39.0">
-                     <Image url="@image/trophy.png"/>
+                     <Image url="@image/trophy.png" />
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="newGameBtn" layoutX="225.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0"
-                    prefWidth="105.0" style="-fx-background-color: black; -fx-background-radius: 90;" text="New Game"
-                    textFill="#eb200d">
+            <Button fx:id="newGameBtn" layoutX="225.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="105.0" style="-fx-background-color: black; -fx-background-radius: 90;" text="New Game" textFill="#eb200d">
                <font>
-                  <Font name="System Bold Italic" size="15.0"/>
+                  <Font name="System Bold Italic" size="15.0" />
                </font>
             </Button>
          </HBox>

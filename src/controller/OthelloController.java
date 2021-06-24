@@ -517,18 +517,14 @@ public class OthelloController implements Initializable {
         }
     }
     public void coloringUpright(int i, int j, int k, int l){
-        Image playImage =null;
+
         if(turn.equals("black")) {
             playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         if(turn.equals("blue")) {
             playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         int h;
         int g=j;
@@ -544,18 +540,15 @@ public class OthelloController implements Initializable {
         }
     }
     public void coloringUpLeft(int i,int j,int k,int l){
-        Image playImage =null;
+
         if(turn.equals("black")) {
             playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         if(turn.equals("blue")) {
             playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
             colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         int h;
         int g=j;
@@ -571,18 +564,14 @@ public class OthelloController implements Initializable {
         }
     }
     public void coloringDownLeft(int i,int j,int k,int l){
-        Image playImage =null;
+
         if(turn.equals("black")) {
             playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         if(turn.equals("blue")) {
             playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         int h;
         int g=j;
@@ -601,15 +590,11 @@ public class OthelloController implements Initializable {
         Image playImage =null;
         if(turn.equals("black")) {
             playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         if(turn.equals("blue")) {
             playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         int h;
         int g=j;
@@ -684,15 +669,11 @@ public class OthelloController implements Initializable {
         Image playImage =null;
         if(turn.equals("black")) {
             playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         if(turn.equals("blue")) {
             playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         for (int l = i; l >=k; l--) {
             colorImage = new ImageView(playImage);
@@ -704,18 +685,13 @@ public class OthelloController implements Initializable {
         }
     }
     public void coloringDown(int i, int j, int k){
-        Image playImage =null;
+
         if(turn.equals("black")) {
             playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         if(turn.equals("blue")) {
             playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
         }
         for (int l = i; l <=k; l++) {
             colorImage = new ImageView(playImage);
@@ -727,18 +703,14 @@ public class OthelloController implements Initializable {
         }
     }
     public void coloringRight(int i, int j, int k){
-        Image playImage =null;
+
         if(turn.equals("black")) {
             playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         if(turn.equals("blue")) {
             playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         for (int l = j; l <=k; l++) {
             colorImage = new ImageView(playImage);
@@ -750,18 +722,14 @@ public class OthelloController implements Initializable {
         }
     }
     public void coloringLeft(int i, int j, int k){
-        Image playImage =null;
+
         if(turn.equals("black")) {
             playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         if(turn.equals("blue")) {
             playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+
         }
         for (int l = j; l >=k; l--) {
             colorImage = new ImageView(playImage);

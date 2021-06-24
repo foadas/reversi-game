@@ -133,34 +133,7 @@ public class OthelloController implements Initializable {
                         point2.setText(pointP2.toString());
                         if(range==0) {
                             if (pointP1 + pointP2 == 64) {
-                                if (pointP1 > pointP2) {
-                                    winnerTxt.setText(player1Lbl.getText() + " is the winner!");
-                                    blackTurn.setVisible(false);
-                                    blueTurn.setVisible(false);
-                                    try {
-                                        addToFile();
-                                    } catch (IOException | ClassNotFoundException ioException) {
-                                        ioException.printStackTrace();
-                                    }
-                                } else if (pointP2 > pointP1) {
-                                    winnerTxt.setText(player2Lbl.getText() + " is the winner!");
-                                    blackTurn.setVisible(false);
-                                    blueTurn.setVisible(false);
-                                    try {
-                                        addToFile();
-                                    } catch (IOException | ClassNotFoundException ioException) {
-                                        ioException.printStackTrace();
-                                    }
-                                } else {
-                                    winnerTxt.setText("Draw!");
-                                    blackTurn.setVisible(false);
-                                    blueTurn.setVisible(false);
-                                    try {
-                                        addToFile();
-                                    } catch (IOException | ClassNotFoundException ioException) {
-                                        ioException.printStackTrace();
-                                    }
-                                }
+                               points();
                             }
                             else {
                                 if (!endingProgram) {
@@ -179,36 +152,8 @@ public class OthelloController implements Initializable {
                                         checkingRange();
                                     }
                                 }
-                                if(range==0)
-                                    if (pointP1 > pointP2) {
-                                        winnerTxt.setText(player1Lbl.getText() + " is the winner!");
-                                        blackTurn.setVisible(false);
-                                        blueTurn.setVisible(false);
-                                        try {
-                                            addToFile();
-                                        } catch (IOException | ClassNotFoundException ioException) {
-                                            ioException.printStackTrace();
-                                        }
-                                    } else if (pointP2 > pointP1) {
-                                        winnerTxt.setText(player2Lbl.getText() + " is the winner!");
-                                        blackTurn.setVisible(false);
-                                        blueTurn.setVisible(false);
-                                        try {
-                                            addToFile();
-                                        } catch (IOException | ClassNotFoundException ioException) {
-                                            ioException.printStackTrace();
-                                        }
-                                    } else {
-                                        winnerTxt.setText("Draw!");
-                                        blackTurn.setVisible(false);
-                                        blueTurn.setVisible(false);
-                                        try {
-                                            addToFile();
-                                        } catch (IOException | ClassNotFoundException ioException) {
-                                            ioException.printStackTrace();
-                                        }
-                                    }
-
+                                if(range==0){
+                                   points();}
                             }
                         }
                         range=0;
@@ -518,20 +463,11 @@ public class OthelloController implements Initializable {
     }
     public void coloringUpright(int i, int j, int k, int l){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+        imageSwitch();
         int h;
         int g=j;
         for (h=i; h>=k&&g<l; ) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+            setColorImage();
             color[h][g]=turn;
             buttons[h][g].setGraphic(colorImage);
             isOk[h][g]=true;
@@ -541,21 +477,12 @@ public class OthelloController implements Initializable {
     }
     public void coloringUpLeft(int i,int j,int k,int l){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+        imageSwitch();
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
-
-        }
         int h;
         int g=j;
         for (h=i; h>=k&&g>=l; ) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+            setColorImage();
             color[h][g]=turn;
             buttons[h][g].setGraphic(colorImage);
             isOk[h][g]=true;
@@ -565,20 +492,11 @@ public class OthelloController implements Initializable {
     }
     public void coloringDownLeft(int i,int j,int k,int l){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+        imageSwitch();
         int h;
         int g=j;
         for (h=i; h<=k&&g>=l; ) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+            setColorImage();
             color[h][g]=turn;
             buttons[h][g].setGraphic(colorImage);
             isOk[h][g]=true;
@@ -587,21 +505,11 @@ public class OthelloController implements Initializable {
         }
     }
     public void coloringDownRight(int i,int j,int k,int l){
-        Image playImage =null;
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+        imageSwitch();
         int h;
         int g=j;
         for (h=i; h<=k&&g<=l; ) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+            setColorImage();
             color[h][g]=turn;
             buttons[h][g].setGraphic(colorImage);
             isOk[h][g]=true;
@@ -666,19 +574,9 @@ public class OthelloController implements Initializable {
         }
     }
     public void coloringUp(int i, int j, int k){
-        Image playImage =null;
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+       imageSwitch();
         for (int l = i; l >=k; l--) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+            setColorImage();
             color[l][j]=turn;
             buttons[l][j].setGraphic(colorImage);
             isOk[l][j]=true;
@@ -686,17 +584,9 @@ public class OthelloController implements Initializable {
     }
     public void coloringDown(int i, int j, int k){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-        }
+        imageSwitch();
         for (int l = i; l <=k; l++) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+            setColorImage();
             color[l][j]=turn;
             buttons[l][j].setGraphic(colorImage);
             isOk[l][j]=true;
@@ -704,18 +594,9 @@ public class OthelloController implements Initializable {
     }
     public void coloringRight(int i, int j, int k){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+        imageSwitch();
         for (int l = j; l <=k; l++) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+            setColorImage();
             color[i][l]=turn;
             buttons[i][l].setGraphic(colorImage);
             isOk[i][l]=true;
@@ -723,18 +604,9 @@ public class OthelloController implements Initializable {
     }
     public void coloringLeft(int i, int j, int k){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
-
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+        imageSwitch();
         for (int l = j; l >=k; l--) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+            setColorImage();
             buttons[i][k].setGraphic(colorImage);
             color[i][l]=turn;
             buttons[i][l].setGraphic(colorImage);
@@ -909,5 +781,40 @@ public class OthelloController implements Initializable {
         oos.writeObject(playerList);
 
         oos.close();
+    }
+    public void points(){
+        if (pointP1 > pointP2) {
+            winnerTxt.setText(player1Lbl.getText() + " is the winner!");
+            blackTurn.setVisible(false);
+
+        } else if (pointP2 > pointP1) {
+            winnerTxt.setText(player2Lbl.getText() + " is the winner!");
+            blackTurn.setVisible(false);
+            blueTurn.setVisible(false);
+
+        } else {
+            winnerTxt.setText("Draw!");
+            blackTurn.setVisible(false);
+            blueTurn.setVisible(false);
+        }
+        try {
+            addToFile();
+        } catch (IOException | ClassNotFoundException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+    public void imageSwitch(){
+        if(turn.equals("black")) {
+            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+
+        }
+        if(turn.equals("blue")) {
+            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+    }
+    }
+    public void setColorImage(){
+        colorImage = new ImageView(playImage);
+        colorImage.setFitHeight(45);
+        colorImage.setFitWidth(45);
     }
 }

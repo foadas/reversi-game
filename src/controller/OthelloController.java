@@ -35,7 +35,7 @@ public class OthelloController implements Initializable {
     public Integer pointP1 = 0;
     public Integer pointP2 = 0;
     public int range = 0;
-    public String turn = "black";
+    public String turn = "blue";
     public Player player1;
     public Player player2;
     private Stage loginStage=new Stage();
@@ -183,6 +183,7 @@ public class OthelloController implements Initializable {
                     ioException.printStackTrace();
                 }
                 scoreStage.setTitle("ScoreBoard");
+                scoreStage.setAlwaysOnTop(true);
                 scoreStage.show();
                 scoreStage.setResizable(false);
             }
@@ -201,6 +202,7 @@ public class OthelloController implements Initializable {
                 logincontroller.setStage(loginStage);
                 loginStage.setAlwaysOnTop(true);
                 loginStage.setTitle("New Game");
+                loginStage.setResizable(false);
                 loginStage.show();
             }
         });
@@ -657,7 +659,7 @@ public class OthelloController implements Initializable {
     }
 
     public void resetGame() {
-        turn = "black";
+        turn = "blue";
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 shouldOf[i][j] = false;

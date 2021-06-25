@@ -23,22 +23,22 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class OthelloController implements Initializable {
-    public boolean [][] isOk =new boolean[8][8];
-    public boolean [][]shouldOf=new boolean[8][8];
-    public boolean endingProgram =false;
-    public int check=0;
-    public boolean stateP1 =true;
-    public boolean stateP2 =true;
-    public String [][]color=new String[8][8];
-    public Button [][]buttons=new Button[8][8];
+    public boolean[][] isOk = new boolean[8][8];
+    public boolean[][] shouldOf = new boolean[8][8];
+    public boolean endingProgram = false;
+    public int check = 0;
+    public boolean stateP1 = true;
+    public boolean stateP2 = true;
+    public String[][] color = new String[8][8];
+    public Button[][] buttons = new Button[8][8];
     public ImageView colorImage;
-    public Integer pointP1=0;
-    public Integer pointP2=0;
-    public int range=0;
-    public String turn="black";
+    public Integer pointP1 = 0;
+    public Integer pointP2 = 0;
+    public int range = 0;
+    public String turn = "black";
     public Player player1;
     public Player player2;
-    public ArrayList<Player>playerList=new ArrayList<>();
+    public ArrayList<Player> playerList = new ArrayList<>();
 
     @FXML
     private Text point1;
@@ -55,7 +55,7 @@ public class OthelloController implements Initializable {
     @FXML
     private Label blackTurn;
     @FXML
-    private Button  bt;
+    private Button bt;
     @FXML
     private Text player2Lbl;
     @FXML
@@ -75,22 +75,22 @@ public class OthelloController implements Initializable {
         bt.setOnAction(event -> resetGame());
         scoreBox.heightProperty().addListener(observable -> {
             DoubleProperty mvh = scoreBox.prefHeightProperty();
-            mvh.bind(Bindings.selectDouble(theStage.sceneProperty(),"height"));
+            mvh.bind(Bindings.selectDouble(theStage.sceneProperty(), "height"));
             DoubleProperty mv = field.minHeightProperty();
-            DoubleProperty m=field.minWidthProperty();
-            mv.bind(Bindings.selectDouble(theStage.sceneProperty(),"height"));
-            m.bind(Bindings.selectDouble(theStage.sceneProperty(),"width"));
+            DoubleProperty m = field.minWidthProperty();
+            mv.bind(Bindings.selectDouble(theStage.sceneProperty(), "height"));
+            m.bind(Bindings.selectDouble(theStage.sceneProperty(), "width"));
         });
         startGame();
-        for (int i = 0; i <8 ; i++) {
-            for (int j = 0; j <8 ; j++) {
-                int a=i;
-                int b=j;
-                buttons[i][j].setOnAction(e->{
-                    if(!isOk[a][b]) {
-                        pointP1=0;
-                        pointP2=0;
-                        check=0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                int a = i;
+                int b = j;
+                buttons[i][j].setOnAction(e -> {
+                    if (!isOk[a][b]) {
+                        pointP1 = 0;
+                        pointP2 = 0;
+                        check = 0;
                         checkup(a, b, turn);
                         checkDown(a, b, turn);
                         checkLeft(a, b, turn);
@@ -100,23 +100,22 @@ public class OthelloController implements Initializable {
                         checkDiameterDownLeft(a, b, turn);
                         checkDiameterDownRight(a, b, turn);
                         if (turn.equals("blue")) {
-                            if (check>0) {
+                            if (check > 0) {
                                 shouldOf[a][b] = true;
                                 turnOff();
                                 turn = "black";
                                 blackTurn.setVisible(true);
                                 blueTurn.setVisible(false);
-                                if(endingProgram){
-                                    endingProgram =false;
+                                if (endingProgram) {
+                                    endingProgram = false;
                                 }
                             }
-                        }
-                        else if (turn.equals("black")){
+                        } else if (turn.equals("black")) {
                             if (check > 0) {
-                                if(endingProgram){
-                                    endingProgram =false;
+                                if (endingProgram) {
+                                    endingProgram = false;
                                 }
-                                shouldOf[a][b]=true;
+                                shouldOf[a][b] = true;
                                 turnOff();
                                 turn = "blue";
                                 blackTurn.setVisible(false);
@@ -131,38 +130,10 @@ public class OthelloController implements Initializable {
                         player2.setPoint(pointP2);
                         point1.setText(pointP1.toString());
                         point2.setText(pointP2.toString());
-                        if(range==0) {
+                        if (range == 0) {
                             if (pointP1 + pointP2 == 64) {
-                                if (pointP1 > pointP2) {
-                                    winnerTxt.setText(player1Lbl.getText() + " is the winner!");
-                                    blackTurn.setVisible(false);
-                                    blueTurn.setVisible(false);
-                                    try {
-                                        addToFile();
-                                    } catch (IOException | ClassNotFoundException ioException) {
-                                        ioException.printStackTrace();
-                                    }
-                                } else if (pointP2 > pointP1) {
-                                    winnerTxt.setText(player2Lbl.getText() + " is the winner!");
-                                    blackTurn.setVisible(false);
-                                    blueTurn.setVisible(false);
-                                    try {
-                                        addToFile();
-                                    } catch (IOException | ClassNotFoundException ioException) {
-                                        ioException.printStackTrace();
-                                    }
-                                } else {
-                                    winnerTxt.setText("Draw!");
-                                    blackTurn.setVisible(false);
-                                    blueTurn.setVisible(false);
-                                    try {
-                                        addToFile();
-                                    } catch (IOException | ClassNotFoundException ioException) {
-                                        ioException.printStackTrace();
-                                    }
-                                }
-                            }
-                            else {
+                                points();
+                            } else {
                                 if (!endingProgram) {
                                     endingProgram = true;
                                     if (turn.equals("blue")) {
@@ -171,61 +142,34 @@ public class OthelloController implements Initializable {
                                         blueTurn.setVisible(false);
                                         checkingRange();
 
-                                    }
-                                    else if (turn.equals("black")) {
+                                    } else if (turn.equals("black")) {
                                         turn = "blue";
                                         blackTurn.setVisible(false);
                                         blueTurn.setVisible(true);
                                         checkingRange();
                                     }
                                 }
-                                if(range==0)
-                                    if (pointP1 > pointP2) {
-                                        winnerTxt.setText(player1Lbl.getText() + " is the winner!");
-                                        blackTurn.setVisible(false);
-                                        blueTurn.setVisible(false);
-                                        try {
-                                            addToFile();
-                                        } catch (IOException | ClassNotFoundException ioException) {
-                                            ioException.printStackTrace();
-                                        }
-                                    } else if (pointP2 > pointP1) {
-                                        winnerTxt.setText(player2Lbl.getText() + " is the winner!");
-                                        blackTurn.setVisible(false);
-                                        blueTurn.setVisible(false);
-                                        try {
-                                            addToFile();
-                                        } catch (IOException | ClassNotFoundException ioException) {
-                                            ioException.printStackTrace();
-                                        }
-                                    } else {
-                                        winnerTxt.setText("Draw!");
-                                        blackTurn.setVisible(false);
-                                        blueTurn.setVisible(false);
-                                        try {
-                                            addToFile();
-                                        } catch (IOException | ClassNotFoundException ioException) {
-                                            ioException.printStackTrace();
-                                        }
-                                    }
+                                if (range == 0) {
+                                    points();
+                                }
                             }
                         }
-                        range=0;
+                        range = 0;
                     }
                 });
             }
         }
-        scoreBoardBtn.setOnAction(e->{
+        scoreBoardBtn.setOnAction(e -> {
 
-            FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Table.fxml"));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Table.fxml"));
             try {
                 loader.load();
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
-            Stage stage=new Stage();
+            Stage stage = new Stage();
             stage.setScene(new Scene(loader.getRoot()));
-            TableController tableController1 =loader.getController();
+            TableController tableController1 = loader.getController();
             try {
                 tableController1.getPlayers(this);
             } catch (IOException ioException) {
@@ -234,31 +178,33 @@ public class OthelloController implements Initializable {
             stage.show();
             stage.setResizable(false);
         });
-        newGameBtn.setOnAction(e->{
-            FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/Login.fxml"));
+        newGameBtn.setOnAction(e -> {
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Login.fxml"));
             try {
                 loader.load();
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
-            Stage stage=new Stage();
-            LoginController logincontroller=loader.getController();
+            Stage stage = new Stage();
+            LoginController logincontroller = loader.getController();
             stage.setScene(new Scene(loader.getRoot()));
             logincontroller.setStage(stage);
             stage.show();
         });
     }
-    public void turnOff(){
-        for (int i = 0; i <8 ; i++) {
-            for (int j = 0; j <8 ; j++) {
+
+    public void turnOff() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 buttons[i][j].setStyle("-fx-background-color: transparent");
                 buttons[i][j].setStyle("-fx-background-color: #D2691E ");
             }
         }
     }
-    public void checkingRange(){
-        for (int i = 0; i <8 ; i++) {
-            for (int j = 0; j <8 ; j++) {
+
+    public void checkingRange() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (!shouldOf[i][j]) {
                     check = 0;
                     checkLeftRange(i, j, turn);
@@ -313,91 +259,79 @@ public class OthelloController implements Initializable {
             }
         }
     }
-    public void checkRight(int i, int j, String turn){
-        for(int k=j+2;k<8;k++){
-            if(color[i][j+1].equals("")||color[i][j+1].equals(turn)){
-                break;
-            }
-            if (color[i][k].equals(""))
-                break;
-            if(color[i][k].equals(turn)){
-                coloringRight(i,j,k);
-                shouldOf[i][j] = true;
-                check++;
-                break;
-            }
-        }
-    }
-    public void checkRightRange(int i,int j,String turn) {
+
+    public void checkRight(int i, int j, String turn) {
         for (int k = j + 2; k < 8; k++) {
             if (color[i][j + 1].equals("") || color[i][j + 1].equals(turn)) {
                 break;
             }
             if (color[i][k].equals(""))
                 break;
-            if(color[i][k].equals(turn)){
+            if (color[i][k].equals(turn)) {
+                coloringRight(i, j, k);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
         }
     }
-    public void calculatePoints(){
-        for (int i = 0; i <8 ; i++) {
-            for (int j = 0; j <8 ; j++) {
-                if(color[i][j].equals("black"))
+
+    public void checkRightRange(int i, int j, String turn) {
+        for (int k = j + 2; k < 8; k++) {
+            if (color[i][j + 1].equals("") || color[i][j + 1].equals(turn)) {
+                break;
+            }
+            if (color[i][k].equals(""))
+                break;
+            if (color[i][k].equals(turn)) {
+                check++;
+                break;
+            }
+        }
+    }
+
+    public void calculatePoints() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (color[i][j].equals("black"))
                     pointP2++;
                 if (color[i][j].equals("blue"))
                     pointP1++;
             }
         }
     }
-    public void checkLeft(int i, int j, String turn){
-        for(int k=j-2;k>=0;k--){
-            if(color[i][j-1].equals("")||color[i][j-1].equals(turn)){
-                break;
-            }
-            if (color[i][k].equals(""))
-                break;
-            if(color[i][k].equals(turn)){
-                coloringLeft(i,j,k);
-                shouldOf[i][j] = true;
-                check++;
-                break;
-            }
-        }
-    }
-    public void checkLeftRange(int i,int j,String turn) {
+
+    public void checkLeft(int i, int j, String turn) {
         for (int k = j - 2; k >= 0; k--) {
             if (color[i][j - 1].equals("") || color[i][j - 1].equals(turn)) {
                 break;
             }
             if (color[i][k].equals(""))
                 break;
-            if(color[i][k].equals(turn)){
-                check++;
-                break;
-            }
-        }
-    }
-    public void checkDiameterUpright(int i, int j , String turn){
-        int k;
-        int l=j+2;
-        for(k=i-2;k>=0&&l<8;){
-            if (color[i-1][j+1].equals("")||color[i-1][j+1].equals(turn))
-                break;
-            if (color[k][l].equals(""))
-                break;
-            if(color[k][l].equals(turn)){
-                coloringUpright(i,j,k,l);
+            if (color[i][k].equals(turn)) {
+                coloringLeft(i, j, k);
                 shouldOf[i][j] = true;
                 check++;
                 break;
             }
-            k--;
-            l++;
         }
     }
-    public void checkDiameterUprightRange(int i, int j , String turn) {
+
+    public void checkLeftRange(int i, int j, String turn) {
+        for (int k = j - 2; k >= 0; k--) {
+            if (color[i][j - 1].equals("") || color[i][j - 1].equals(turn)) {
+                break;
+            }
+            if (color[i][k].equals(""))
+                break;
+            if (color[i][k].equals(turn)) {
+                check++;
+                break;
+            }
+        }
+    }
+
+    public void checkDiameterUpright(int i, int j, String turn) {
         int k;
         int l = j + 2;
         for (k = i - 2; k >= 0 && l < 8; ) {
@@ -405,7 +339,9 @@ public class OthelloController implements Initializable {
                 break;
             if (color[k][l].equals(""))
                 break;
-            if(color[k][l].equals(turn)){
+            if (color[k][l].equals(turn)) {
+                coloringUpright(i, j, k, l);
+                shouldOf[i][j] = true;
                 check++;
                 break;
             }
@@ -413,16 +349,34 @@ public class OthelloController implements Initializable {
             l++;
         }
     }
-    public void checkDiameterDownLeft(int i, int j , String turn){
+
+    public void checkDiameterUprightRange(int i, int j, String turn) {
         int k;
-        int l=j-2;
-        for(k=i+2;l>=0&&k<8;){
-            if (color[i+1][j-1].equals("")||color[i+1][j-1].equals(turn))
+        int l = j + 2;
+        for (k = i - 2; k >= 0 && l < 8; ) {
+            if (color[i - 1][j + 1].equals("") || color[i - 1][j + 1].equals(turn))
                 break;
             if (color[k][l].equals(""))
                 break;
-            if(color[k][l].equals(turn)){
-                coloringDownLeft(i,j,k,l);
+            if (color[k][l].equals(turn)) {
+                check++;
+                break;
+            }
+            k--;
+            l++;
+        }
+    }
+
+    public void checkDiameterDownLeft(int i, int j, String turn) {
+        int k;
+        int l = j - 2;
+        for (k = i + 2; l >= 0 && k < 8; ) {
+            if (color[i + 1][j - 1].equals("") || color[i + 1][j - 1].equals(turn))
+                break;
+            if (color[k][l].equals(""))
+                break;
+            if (color[k][l].equals(turn)) {
+                coloringDownLeft(i, j, k, l);
                 shouldOf[i][j] = true;
                 check++;
                 break;
@@ -431,15 +385,16 @@ public class OthelloController implements Initializable {
             l--;
         }
     }
-    public void checkDiameterDownLeftRange(int i, int j , String turn){
+
+    public void checkDiameterDownLeftRange(int i, int j, String turn) {
         int k;
-        int l=j-2;
-        for(k=i+2;l>=0&&k<8;){
-            if (color[i+1][j-1].equals("")||color[i+1][j-1].equals(turn))
+        int l = j - 2;
+        for (k = i + 2; l >= 0 && k < 8; ) {
+            if (color[i + 1][j - 1].equals("") || color[i + 1][j - 1].equals(turn))
                 break;
             if (color[k][l].equals(""))
                 break;
-            if(color[k][l].equals(turn)){
+            if (color[k][l].equals(turn)) {
                 check++;
                 break;
             }
@@ -447,16 +402,17 @@ public class OthelloController implements Initializable {
             l--;
         }
     }
-    public void checkDiameterDownRight(int i,int j ,String turn){
+
+    public void checkDiameterDownRight(int i, int j, String turn) {
         int k;
-        int l=j+2;
-        for(k=i+2;l<8&&k<8;){
-            if (color[i+1][j+1].equals("")||color[i+1][j+1].equals(turn))
+        int l = j + 2;
+        for (k = i + 2; l < 8 && k < 8; ) {
+            if (color[i + 1][j + 1].equals("") || color[i + 1][j + 1].equals(turn))
                 break;
             if (color[k][l].equals(""))
                 break;
-            if(color[k][l].equals(turn)){
-                coloringDownRight(i,j,k,l);
+            if (color[k][l].equals(turn)) {
+                coloringDownRight(i, j, k, l);
                 shouldOf[i][j] = true;
                 check++;
                 break;
@@ -465,15 +421,16 @@ public class OthelloController implements Initializable {
             l++;
         }
     }
-    public void checkDiameterDownRightRange(int i,int j ,String turn){
+
+    public void checkDiameterDownRightRange(int i, int j, String turn) {
         int k;
-        int l=j+2;
-        for(k=i+2;l<8&&k<8;){
-            if (color[i+1][j+1].equals("")||color[i+1][j+1].equals(turn))
+        int l = j + 2;
+        for (k = i + 2; l < 8 && k < 8; ) {
+            if (color[i + 1][j + 1].equals("") || color[i + 1][j + 1].equals(turn))
                 break;
             if (color[k][l].equals(""))
                 break;
-            if(color[k][l].equals(turn)){
+            if (color[k][l].equals(turn)) {
                 check++;
                 break;
             }
@@ -481,16 +438,17 @@ public class OthelloController implements Initializable {
             l++;
         }
     }
-    public void checkDiameterUpLeft(int i, int j , String turn){
+
+    public void checkDiameterUpLeft(int i, int j, String turn) {
         int k;
-        int l=j-2;
-        for(k=i-2;k>=0&&l>=0;){
-            if (color[i-1][j-1].equals("")||color[i-1][j-1].equals(turn))
+        int l = j - 2;
+        for (k = i - 2; k >= 0 && l >= 0; ) {
+            if (color[i - 1][j - 1].equals("") || color[i - 1][j - 1].equals(turn))
                 break;
             if (color[k][l].equals(""))
                 break;
-            if(color[k][l].equals(turn)){
-                coloringUpLeft(i,j,k,l);
+            if (color[k][l].equals(turn)) {
+                coloringUpLeft(i, j, k, l);
                 shouldOf[i][j] = true;
                 check++;
                 break;
@@ -499,15 +457,16 @@ public class OthelloController implements Initializable {
             l--;
         }
     }
-    public void checkDiameterUpLeftRange(int i, int j , String turn){
+
+    public void checkDiameterUpLeftRange(int i, int j, String turn) {
         int k;
-        int l=j-2;
-        for(k=i-2;k>=0&&l>=0;){
-            if (color[i-1][j-1].equals("")||color[i-1][j-1].equals(turn))
+        int l = j - 2;
+        for (k = i - 2; k >= 0 && l >= 0; ) {
+            if (color[i - 1][j - 1].equals("") || color[i - 1][j - 1].equals(turn))
                 break;
             if (color[k][l].equals(""))
                 break;
-            if(color[k][l].equals(turn)){
+            if (color[k][l].equals(turn)) {
                 check++;
                 break;
             }
@@ -515,241 +474,182 @@ public class OthelloController implements Initializable {
             l--;
         }
     }
-    public void coloringUpright(int i, int j, int k, int l){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+    public void coloringUpright(int i, int j, int k, int l) {
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+        imageSwitch();
         int h;
-        int g=j;
-        for (h=i; h>=k&&g<l; ) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
-            color[h][g]=turn;
+        int g = j;
+        for (h = i; h >= k && g < l; ) {
+            setColorImage();
+            color[h][g] = turn;
             buttons[h][g].setGraphic(colorImage);
-            isOk[h][g]=true;
+            isOk[h][g] = true;
             h--;
             g++;
         }
     }
-    public void coloringUpLeft(int i,int j,int k,int l){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+    public void coloringUpLeft(int i, int j, int k, int l) {
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-            colorImage = new ImageView(playImage);
+        imageSwitch();
 
-        }
         int h;
-        int g=j;
-        for (h=i; h>=k&&g>=l; ) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
-            color[h][g]=turn;
+        int g = j;
+        for (h = i; h >= k && g >= l; ) {
+            setColorImage();
+            color[h][g] = turn;
             buttons[h][g].setGraphic(colorImage);
-            isOk[h][g]=true;
+            isOk[h][g] = true;
             h--;
             g--;
         }
     }
-    public void coloringDownLeft(int i,int j,int k,int l){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+    public void coloringDownLeft(int i, int j, int k, int l) {
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+        imageSwitch();
         int h;
-        int g=j;
-        for (h=i; h<=k&&g>=l; ) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
-            color[h][g]=turn;
+        int g = j;
+        for (h = i; h <= k && g >= l; ) {
+            setColorImage();
+            color[h][g] = turn;
             buttons[h][g].setGraphic(colorImage);
-            isOk[h][g]=true;
+            isOk[h][g] = true;
             h++;
             g--;
         }
     }
-    public void coloringDownRight(int i,int j,int k,int l){
-        Image playImage =null;
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
+    public void coloringDownRight(int i, int j, int k, int l) {
+        imageSwitch();
         int h;
-        int g=j;
-        for (h=i; h<=k&&g<=l; ) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
-            color[h][g]=turn;
+        int g = j;
+        for (h = i; h <= k && g <= l; ) {
+            setColorImage();
+            color[h][g] = turn;
             buttons[h][g].setGraphic(colorImage);
-            isOk[h][g]=true;
+            isOk[h][g] = true;
             h++;
             g++;
         }
     }
-    public void checkDown(int i , int j, String turn){
-        for(int k=i+2;k<8;k++){
-            if(color[i+1][j].equals("")||color[i+1][j].equals(turn)){
+
+    public void checkDown(int i, int j, String turn) {
+        for (int k = i + 2; k < 8; k++) {
+            if (color[i + 1][j].equals("") || color[i + 1][j].equals(turn)) {
                 break;
             }
             if (color[k][j].equals(""))
                 break;
-            if(color[k][j].equals(turn)){
-                coloringDown(i,j,k);
+            if (color[k][j].equals(turn)) {
+                coloringDown(i, j, k);
                 shouldOf[i][j] = true;
                 check++;
                 break;
             }
         }
     }
-    public void checkDownRange(int i ,int j, String turn){
-        for(int k=i+2;k<8;k++){
-            if(color[i+1][j].equals("")||color[i+1][j].equals(turn)){
+
+    public void checkDownRange(int i, int j, String turn) {
+        for (int k = i + 2; k < 8; k++) {
+            if (color[i + 1][j].equals("") || color[i + 1][j].equals(turn)) {
                 break;
             }
             if (color[k][j].equals(""))
                 break;
-            if(color[k][j].equals(turn)){
+            if (color[k][j].equals(turn)) {
                 check++;
                 break;
             }
         }
     }
-    public void checkup(int i,int j,String turn){
-        for(int k=i-2;k>=0;k--){
-            if(color[i-1][j].equals("")||color[i-1][j].equals(turn)){
+
+    public void checkup(int i, int j, String turn) {
+        for (int k = i - 2; k >= 0; k--) {
+            if (color[i - 1][j].equals("") || color[i - 1][j].equals(turn)) {
                 break;
             }
             if (color[k][j].equals(""))
                 break;
-            if(color[k][j].equals(turn)){
-                coloringUp(i,j,k);
+            if (color[k][j].equals(turn)) {
+                coloringUp(i, j, k);
                 shouldOf[i][j] = true;
                 check++;
                 break;
             }
         }
     }
-    public void checkUpRange(int i,int j,String turn){
-        for(int k=i-2;k>=0;k--){
-            if(color[i-1][j].equals("")||color[i-1][j].equals(turn)){
+
+    public void checkUpRange(int i, int j, String turn) {
+        for (int k = i - 2; k >= 0; k--) {
+            if (color[i - 1][j].equals("") || color[i - 1][j].equals(turn)) {
                 break;
             }
             if (color[k][j].equals(""))
                 break;
-            if(color[k][j].equals(turn)){
+            if (color[k][j].equals(turn)) {
                 check++;
                 break;
             }
         }
     }
-    public void coloringUp(int i, int j, int k){
-        Image playImage =null;
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
-        for (int l = i; l >=k; l--) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
-            color[l][j]=turn;
+    public void coloringUp(int i, int j, int k) {
+        imageSwitch();
+        for (int l = i; l >= k; l--) {
+            setColorImage();
+            color[l][j] = turn;
             buttons[l][j].setGraphic(colorImage);
-            isOk[l][j]=true;
+            isOk[l][j] = true;
         }
     }
-    public void coloringDown(int i, int j, int k){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+    public void coloringDown(int i, int j, int k) {
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-        }
-        for (int l = i; l <=k; l++) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
-            color[l][j]=turn;
+        imageSwitch();
+        for (int l = i; l <= k; l++) {
+            setColorImage();
+            color[l][j] = turn;
             buttons[l][j].setGraphic(colorImage);
-            isOk[l][j]=true;
+            isOk[l][j] = true;
         }
     }
-    public void coloringRight(int i, int j, int k){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+    public void coloringRight(int i, int j, int k) {
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
-        for (int l = j; l <=k; l++) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
-            color[i][l]=turn;
+        imageSwitch();
+        for (int l = j; l <= k; l++) {
+            setColorImage();
+            color[i][l] = turn;
             buttons[i][l].setGraphic(colorImage);
-            isOk[i][l]=true;
+            isOk[i][l] = true;
         }
     }
-    public void coloringLeft(int i, int j, int k){
 
-        if(turn.equals("black")) {
-            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+    public void coloringLeft(int i, int j, int k) {
 
-        }
-        if(turn.equals("blue")) {
-            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
-
-        }
-        for (int l = j; l >=k; l--) {
-            colorImage = new ImageView(playImage);
-            colorImage.setFitHeight(45);
-            colorImage.setFitWidth(45);
+        imageSwitch();
+        for (int l = j; l >= k; l--) {
+            setColorImage();
             buttons[i][k].setGraphic(colorImage);
-            color[i][l]=turn;
+            color[i][l] = turn;
             buttons[i][l].setGraphic(colorImage);
-            isOk[i][l]=true;
+            isOk[i][l] = true;
         }
     }
-    public void s(Stage stage){
-        this.theStage=stage;
+
+    public void s(Stage stage) {
+        this.theStage = stage;
     }
-    public void resetGame(){
-        turn="black";
-        for (int i = 0; i <8 ; i++) {
-            for (int j = 0; j <8 ; j++) {
-                shouldOf[i][j]=false;
-                isOk[i][j]=false;
-                color[i][j]="";
+
+    public void resetGame() {
+        turn = "black";
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                shouldOf[i][j] = false;
+                isOk[i][j] = false;
+                color[i][j] = "";
                 buttons[i][j].setGraphic(null);
             }
         }
@@ -758,94 +658,97 @@ public class OthelloController implements Initializable {
         colorImage.setFitHeight(45);
         colorImage.setFitWidth(45);
         buttons[3][3].setGraphic(colorImage);
-        color[3][3]="blue";
-        shouldOf[3][3]=true;
-        isOk[3][3]=true;
+        color[3][3] = "blue";
+        shouldOf[3][3] = true;
+        isOk[3][3] = true;
 
         playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
         colorImage = new ImageView(playImage);
         colorImage.setFitHeight(45);
         colorImage.setFitWidth(45);
         buttons[3][4].setGraphic(colorImage);
-        color[3][4]="black";
-        shouldOf[3][4]=true;
-        isOk[3][4]=true;
+        color[3][4] = "black";
+        shouldOf[3][4] = true;
+        isOk[3][4] = true;
 
         playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
         colorImage = new ImageView(playImage);
         colorImage.setFitHeight(45);
         colorImage.setFitWidth(45);
         buttons[4][3].setGraphic(colorImage);
-        color[4][3]="black";
-        shouldOf[4][3]=true;
-        isOk[4][3]=true;
+        color[4][3] = "black";
+        shouldOf[4][3] = true;
+        isOk[4][3] = true;
         playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
         colorImage = new ImageView(playImage);
         colorImage.setFitHeight(45);
         colorImage.setFitWidth(45);
         buttons[4][4].setGraphic(colorImage);
-        color[4][4]="blue";
-        shouldOf[4][4]=true;
-        isOk[4][4]=true;
+        color[4][4] = "blue";
+        shouldOf[4][4] = true;
+        isOk[4][4] = true;
         turnOff();
         checkingRange();
         blackTurn.setVisible(false);
         blueTurn.setVisible(true);
-        pointP2=2;
-        pointP1=2;
+        pointP2 = 2;
+        pointP1 = 2;
         point1.setText(pointP1.toString());
         point2.setText(pointP2.toString());
         winnerTxt.setText("");
 
     }
-    public void blackStart(Button button){
+
+    public void blackStart(Button button) {
         colorImage = new ImageView(playImage2);
         colorImage.setFitHeight(45);
         colorImage.setFitWidth(45);
         button.setGraphic(colorImage);
     }
-    public void blueStart(Button button){
+
+    public void blueStart(Button button) {
         colorImage = new ImageView(playImage);
         colorImage.setFitHeight(45);
         colorImage.setFitWidth(45);
         button.setGraphic(colorImage);
     }
-    public void startGame(){
-        for(int i=0;i<8;i++){
-            HBox hBox=new HBox();
-            for (int j = 0; j <8 ; j++) {
-                Button button=new Button("");
-                color[i][j]="";
-                if(i==3&&j==3){
+
+    public void startGame() {
+        for (int i = 0; i < 8; i++) {
+            HBox hBox = new HBox();
+            for (int j = 0; j < 8; j++) {
+                Button button = new Button("");
+                color[i][j] = "";
+                if (i == 3 && j == 3) {
                     blueStart(button);
-                    color[i][j]="blue";
-                    shouldOf[i][j]=true;
-                    isOk[i][j]=true;
+                    color[i][j] = "blue";
+                    shouldOf[i][j] = true;
+                    isOk[i][j] = true;
                 }
-                if(i==3&&j==4){
+                if (i == 3 && j == 4) {
                     blackStart(button);
-                    color[i][j]="black";
-                    shouldOf[i][j]=true;
-                    isOk[i][j]=true;
+                    color[i][j] = "black";
+                    shouldOf[i][j] = true;
+                    isOk[i][j] = true;
                 }
-                if(i==4&&j==3){
+                if (i == 4 && j == 3) {
                     blackStart(button);
-                    color[i][j]="black";
-                    shouldOf[i][j]=true;
-                    isOk[i][j]=true;
+                    color[i][j] = "black";
+                    shouldOf[i][j] = true;
+                    isOk[i][j] = true;
                 }
-                if(i==4&&j==4){
+                if (i == 4 && j == 4) {
                     blueStart(button);
-                    color[i][j]="blue";
-                    shouldOf[i][j]=true;
-                    isOk[i][j]=true;
+                    color[i][j] = "blue";
+                    shouldOf[i][j] = true;
+                    isOk[i][j] = true;
                 }
                 button.setPrefHeight(70);
                 button.setPrefWidth(70);
                 button.setStyle("-fx-background-color: transparent");
                 button.setStyle("-fx-background-color: #D2691E ");
                 button.getStyleClass().add("button");
-                buttons[i][j]=button;
+                buttons[i][j] = button;
                 hBox.getChildren().add(button);
             }
             hBox.setSpacing(2);
@@ -859,31 +762,35 @@ public class OthelloController implements Initializable {
         point1.setText(pointP1.toString());
         point2.setText(pointP2.toString());
     }
-    public void makeButtonsUnSelectable(){
+
+    public void makeButtonsUnSelectable() {
         bt.setDisable(true);
         for (int i = 0; i < 8; i++) {
-            for (int j = 0; j <8 ; j++) {
+            for (int j = 0; j < 8; j++) {
                 buttons[i][j].setDisable(true);
             }
         }
     }
-    public void makeButtonsSelectable(){
+
+    public void makeButtonsSelectable() {
         bt.setDisable(false);
         for (int i = 0; i < 8; i++) {
-            for (int j = 0; j <8 ; j++) {
+            for (int j = 0; j < 8; j++) {
                 buttons[i][j].setDisable(false);
             }
         }
     }
-    public void setNames(Player p1, Player p2){
-        player1Lbl.setText(p1.getUser()+":");
-        player2Lbl.setText(p2.getUser()+":");
-        player1=new Player();
-        player1=p1;
-        player2=new Player();
-        player2=p2;
+
+    public void setNames(Player p1, Player p2) {
+        player1Lbl.setText(p1.getUser() + ":");
+        player2Lbl.setText(p2.getUser() + ":");
+        player1 = new Player();
+        player1 = p1;
+        player2 = new Player();
+        player2 = p2;
 
     }
+
     public void addToFile() throws IOException, ClassNotFoundException {
         File f = new File("MyFile.txt");
         for (Player player : playerList) {
@@ -898,9 +805,9 @@ public class OthelloController implements Initializable {
                 player.setPoint(pts2 + pointP1);
             }
         }
-        if(stateP1)
+        if (stateP1)
             playerList.add(player1);
-        if(stateP2)
+        if (stateP2)
             playerList.add(player2);
         FileOutputStream fos;
         fos = new FileOutputStream(f);
@@ -908,5 +815,43 @@ public class OthelloController implements Initializable {
         oos.writeObject(playerList);
 
         oos.close();
+    }
+
+    public void points() {
+        if (pointP1 > pointP2) {
+            winnerTxt.setText(player1Lbl.getText() + " is the winner!");
+            blackTurn.setVisible(false);
+
+        } else if (pointP2 > pointP1) {
+            winnerTxt.setText(player2Lbl.getText() + " is the winner!");
+            blackTurn.setVisible(false);
+            blueTurn.setVisible(false);
+
+        } else {
+            winnerTxt.setText("Draw!");
+            blackTurn.setVisible(false);
+            blueTurn.setVisible(false);
+        }
+        try {
+            addToFile();
+        } catch (IOException | ClassNotFoundException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    public void imageSwitch() {
+        if (turn.equals("black")) {
+            playImage = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());
+
+        }
+        if (turn.equals("blue")) {
+            playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
+        }
+    }
+
+    public void setColorImage() {
+        colorImage = new ImageView(playImage);
+        colorImage.setFitHeight(45);
+        colorImage.setFitWidth(45);
     }
 }

@@ -33,6 +33,6 @@ public class Main extends Application {
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
         stage.setTitle("Enter Names");
-        stage.setOnCloseRequest(event -> primaryStage.close());
+        stage.setOnCloseRequest(event ->othellocontroller.getNewGameBtn().setDisable(false));
     }
 }

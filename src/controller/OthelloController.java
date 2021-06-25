@@ -64,8 +64,13 @@ public class OthelloController implements Initializable {
     private Text player1Lbl;
     @FXML
     private Button scoreBoardBtn;
+
+    public Button getNewGameBtn() {
+        return newGameBtn;
+    }
+
     @FXML
-    private Button newGameBtn;
+    private  Button newGameBtn;
     Stage theStage;
     Image playImage = new Image(new File("src\\view\\image\\circle.png").toURI().toString());
     Image playImage2 = new Image(new File("src\\view\\image\\circular-filled-shape.png").toURI().toString());

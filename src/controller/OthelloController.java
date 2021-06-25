@@ -38,6 +38,8 @@ public class OthelloController implements Initializable {
     public String turn = "black";
     public Player player1;
     public Player player2;
+    private Stage loginStage=new Stage();
+    private Stage scoreStage=new Stage();
     public ArrayList<Player> playerList = new ArrayList<>();
 
     @FXML
@@ -160,36 +162,40 @@ public class OthelloController implements Initializable {
             }
         }
         scoreBoardBtn.setOnAction(e -> {
-
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Table.fxml"));
-            try {
-                loader.load();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
+            if(!scoreStage.isShowing()) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Table.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                scoreStage=new Stage();
+                scoreStage.setScene(new Scene(loader.getRoot()));
+                TableController tableController1 = loader.getController();
+                try {
+                    tableController1.getPlayers(this);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                scoreStage.show();
+                scoreStage.setResizable(false);
             }
-            Stage stage = new Stage();
-            stage.setScene(new Scene(loader.getRoot()));
-            TableController tableController1 = loader.getController();
-            try {
-                tableController1.getPlayers(this);
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-            stage.show();
-            stage.setResizable(false);
         });
         newGameBtn.setOnAction(e -> {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Login.fxml"));
-            try {
-                loader.load();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
+            if(!loginStage.isShowing()) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Login.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                loginStage = new Stage();
+                LoginController logincontroller = loader.getController();
+                loginStage.setScene(new Scene(loader.getRoot()));
+                logincontroller.setStage(loginStage);
+                loginStage.setAlwaysOnTop(true);
+                loginStage.show();
             }
-            Stage stage = new Stage();
-            LoginController logincontroller = loader.getController();
-            stage.setScene(new Scene(loader.getRoot()));
-            logincontroller.setStage(stage);
-            stage.show();
         });
     }
 
@@ -765,6 +771,7 @@ public class OthelloController implements Initializable {
 
     public void makeButtonsUnSelectable() {
         bt.setDisable(true);
+        newGameBtn.setDisable(true);
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 buttons[i][j].setDisable(true);
@@ -774,6 +781,7 @@ public class OthelloController implements Initializable {
 
     public void makeButtonsSelectable() {
         bt.setDisable(false);
+        newGameBtn.setDisable(false);
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 buttons[i][j].setDisable(false);

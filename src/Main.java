@@ -18,7 +18,6 @@ public class Main extends Application {
         LoginController.giveController(othellocontroller);
         othellocontroller.makeButtonsUnSelectable();
         othellocontroller.s(primaryStage);
-        //scene.getStylesheets().add(getClass().getResource("BackGround.css").toExternalForm());
         primaryStage.setScene(new Scene(loader.getRoot()));
         primaryStage.setMinWidth(1000);
         primaryStage.setMinHeight(850);

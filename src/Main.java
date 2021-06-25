@@ -21,6 +21,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(loader.getRoot()));
         primaryStage.setMinWidth(1000);
         primaryStage.setMinHeight(850);
+        primaryStage.setTitle("Reversi");
         primaryStage.show();
         FXMLLoader fxmlLoader=new FXMLLoader(this.getClass().getResource("view/Login.fxml"));
         fxmlLoader.load();
@@ -31,6 +32,7 @@ public class Main extends Application {
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
+        stage.setTitle("Enter Names");
         stage.setOnCloseRequest(event -> primaryStage.close());
     }
 }

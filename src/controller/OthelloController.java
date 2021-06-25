@@ -177,6 +177,7 @@ public class OthelloController implements Initializable {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
+                scoreStage.setTitle("ScoreBoard");
                 scoreStage.show();
                 scoreStage.setResizable(false);
             }
@@ -194,6 +195,7 @@ public class OthelloController implements Initializable {
                 loginStage.setScene(new Scene(loader.getRoot()));
                 logincontroller.setStage(loginStage);
                 loginStage.setAlwaysOnTop(true);
+                loginStage.setTitle("New Game");
                 loginStage.show();
             }
         });
